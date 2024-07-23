@@ -5,7 +5,9 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  $linkColor: orange;
+
   .container {
     position: absolute;
     top: 50%;
@@ -28,7 +30,7 @@
   .container a:hover {
     background-color: black;
     color: white; 
-    border: 2px solid orange;
+    border: 2px solid $linkColor;
   }
 </style>
 
