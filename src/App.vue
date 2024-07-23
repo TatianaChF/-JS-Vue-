@@ -16,5 +16,19 @@
     justify-content: center;
     text-align: center;
   }
+
+  .container a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+
+  .container a:hover {
+    background-color: black;
+    color: white; 
+    border: 2px solid orange;
+  }
 </style>
 
