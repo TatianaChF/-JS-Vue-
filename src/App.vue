@@ -1,20 +1,21 @@
 <template>
   <v-app>
-    <v-container>
-      <v-responsive>
-        <div class="container">
-          <h1>Давайте разделим счет</h1>
-          <a href="#">Начать</a>
-        </div>
-      </v-responsive>
-    </v-container>
+    <div class="container">
+      <h1>Разделить чек</h1>
+      <v-btn>Начать</v-btn>
+    </div>
+    <v-btn @click="toggleTheme">Изменить цвет темы</v-btn>
   </v-app>
 </template>
 
 <script setup>
-  import { useTheme } from 'vuetify';
+import { useTheme } from 'vuetify'
 
-  const theme = useTheme();
+const theme = useTheme()
+
+function toggleTheme () {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
 </script>
 
 <style lang="scss" scoped>
