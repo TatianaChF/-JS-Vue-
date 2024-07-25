@@ -8,10 +8,11 @@ import * as directives from 'vuetify/directives'
 
 // Router
 import { createMemoryHistory, createRouter } from 'vue-router'
-import ListPerson from '../components/ListPerson.vue'
+
 
 // Components
 import App from './App.vue'
+import ListPerson from './components/ListPerson.vue'
 
 const vuetify = createVuetify({
   components,
