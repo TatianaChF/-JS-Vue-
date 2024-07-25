@@ -6,13 +6,14 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-// Router
-import { createMemoryHistory, createRouter } from 'vue-router'
-
-
 // Components
 import App from './App.vue'
+
+
+import { createMemoryHistory, createRouter } from 'vue-router'
+
 import ListPerson from './components/ListPerson.vue'
+import MainPage from './components/MainPage.vue'
 
 const vuetify = createVuetify({
   components,
@@ -20,13 +21,14 @@ const vuetify = createVuetify({
 })
 
 const routes = [
-  { path: '/', component: App },
-  { path: '/persons', component: ListPerson },
+    { path: '/', component: MainPage },
+    { path: '/persons', component: ListPerson },
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
-  routes,
+    history: createMemoryHistory(),
+    routes,
 })
+
 
 createApp(App).use(router).use(vuetify).mount('#app')
