@@ -13,7 +13,7 @@
         </div>
         <v-btn variant="tonal">Дальше!</v-btn>
     </div>
-    <FormPerson v-if="isOpen"></FormPerson>
+    <FormPerson v-if="isOpen" :open="isOpen" @change-open="isOpen = false"></FormPerson>
 </template>
 
 <style lang="scss" scoped>
@@ -24,5 +24,9 @@
     import { ref } from "vue";
     import FormPerson from './FormPerson.vue';
 
-    const isOpen = ref(false);
+    let isOpen = ref(false);
+
+    defineProps({
+        open: Boolean
+    })
 </script>
