@@ -10,7 +10,7 @@ import * as directives from 'vuetify/directives'
 import App from './App.vue'
 
 
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 
 import ListPerson from './components/ListPerson.vue'
 import MainPage from './components/MainPage.vue'
@@ -26,7 +26,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })
 
