@@ -21,8 +21,8 @@ const vuetify = createVuetify({
 })
 
 const routes = [
-    { path: '/', component: MainPage },
-    { path: '/persons', component: ListPerson },
+    { name: 'Home', path: '/', component: MainPage },
+    { name: 'Persons', path: '/persons', component: ListPerson },
 ]
 
 const router = createRouter({
