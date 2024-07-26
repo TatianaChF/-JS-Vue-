@@ -4,11 +4,12 @@
             <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
             <v-list lines="one">
                 <v-list-item
-                    v-for="n in 6"
-                    :key="n"
-                    :title="'Item ' + n"
-                    subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-                ></v-list-item>
+                    v-for="person in persons"
+                    :key="persons[person]"
+                    :title="name"
+                >
+                    <person-info :name="person"></person-info>
+                </v-list-item>
             </v-list>
         </div>
         <v-btn variant="tonal">Дальше!</v-btn>
@@ -23,11 +24,14 @@
 <script setup>
     import { ref, computed } from "vue";
     import FormPerson from './FormPerson.vue';
+    import PersonInfo from './PersonInfo.vue';
 
     let isOpen = ref(false);
+    let persons = ref(["A", "B", "C"]);
 
     defineProps({
-        open: Boolean
+        open: Boolean,
+        name: String
     })
 
     const changeStyles = computed(() => {
