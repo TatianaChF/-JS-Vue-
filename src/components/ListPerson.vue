@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div :class="changeStyles">
         <div class="container__form-person">
             <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
             <v-list lines="one">
@@ -21,12 +21,16 @@
 </style>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     import FormPerson from './FormPerson.vue';
 
     let isOpen = ref(false);
 
     defineProps({
         open: Boolean
+    })
+
+    const changeStyles = computed(() => {
+        return isOpen.value ? "container container__hidden_space" : "container";
     })
 </script>
