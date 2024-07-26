@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container__form-person">
-            <v-btn variant="tonal">Добавить человека</v-btn>
+            <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
             <v-list lines="one">
                 <v-list-item
                     v-for="n in 6"
@@ -13,8 +13,16 @@
         </div>
         <v-btn variant="tonal">Дальше!</v-btn>
     </div>
+    <FormPerson v-if="isOpen"></FormPerson>
 </template>
 
 <style lang="scss" scoped>
     @import './../assets/style.scss'
 </style>
+
+<script setup>
+    import { ref } from "vue";
+    import FormPerson from './FormPerson.vue';
+
+    const isOpen = ref(false);
+</script>
