@@ -20,7 +20,10 @@
     v-if="isOpen"
     :open="isOpen"
     @change-open="isOpen = false"
-    @add-person="(firstName) => persons.push(firstName)"
+    @add-person="(firstName) => {
+        persons.push(firstName);
+        isOpen = false;
+    }"
   ></FormPerson>
 </template>
 
