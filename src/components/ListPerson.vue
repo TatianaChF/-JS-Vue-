@@ -9,7 +9,7 @@
             :key="persons[person]"
             :title="name"
           >
-            <person-info :name="person"></person-info>
+            <person-info :name="person.firstName"></person-info>
           </v-list-item>
         </v-list>
       </v-card>
@@ -37,7 +37,11 @@ import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 
 let isOpen = ref(false);
-let persons = ref(["A", "B", "C"]);
+let persons = ref([
+    {id: 1, firstName: 'A'},
+    {id: 2, firstName: 'B'},
+    {id: 3, firstName: 'C'}
+]);
 
 defineProps({
   open: Boolean,
@@ -47,4 +51,8 @@ defineProps({
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
+
+const removePerson = () => {
+
+}
 </script>
