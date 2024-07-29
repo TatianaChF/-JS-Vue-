@@ -1,40 +1,46 @@
 <template>
-    <div :class="changeStyles">
-        <div class="container__form-person">
-            <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-            <v-list lines="one">
-                <v-list-item
-                    v-for="person in persons"
-                    :key="persons[person]"
-                    :title="name"
-                >
-                    <person-info :name="person"></person-info>
-                </v-list-item>
-            </v-list>
-        </div>
-        <v-btn variant="tonal">Дальше!</v-btn>
+  <div :class="changeStyles">
+    <div class="container__form-person">
+      <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
+      <v-card max-width="900">
+        <v-list lines="three">
+          <v-list-item
+            v-for="person in persons"
+            :key="persons[person]"
+            :title="name"
+          >
+            <person-info :name="person"></person-info>
+          </v-list-item>
+        </v-list>
+      </v-card>
     </div>
-    <FormPerson v-if="isOpen" :open="isOpen" @change-open="isOpen = false"></FormPerson>
+    <v-btn variant="tonal">Дальше!</v-btn>
+  </div>
+  <FormPerson
+    v-if="isOpen"
+    :open="isOpen"
+    @change-open="isOpen = false"
+  ></FormPerson>
 </template>
 
 <style lang="scss" scoped>
-    @import './../assets/style.scss'
+@import "./../assets/style.scss";
 </style>
 
 <script setup>
-    import { ref, computed } from "vue";
-    import FormPerson from './FormPerson.vue';
-    import PersonInfo from './PersonInfo.vue';
+import { ref, computed } from "vue";
+import FormPerson from "./FormPerson.vue";
+import PersonInfo from "./PersonInfo.vue";
 
-    let isOpen = ref(false);
-    let persons = ref(["A", "B", "C"]);
+let isOpen = ref(false);
+let persons = ref(["A", "B", "C"]);
 
-    defineProps({
-        open: Boolean,
-        name: String
-    })
+defineProps({
+  open: Boolean,
+  name: String,
+});
 
-    const changeStyles = computed(() => {
-        return isOpen.value ? "container container__hidden_space" : "container";
-    })
+const changeStyles = computed(() => {
+  return isOpen.value ? "container container__hidden_space" : "container";
+});
 </script>
