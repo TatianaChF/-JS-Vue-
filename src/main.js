@@ -9,9 +9,26 @@ import * as directives from 'vuetify/directives'
 // Components
 import App from './App.vue'
 
+
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+
+import ListPerson from './components/ListPerson.vue'
+import MainPage from './components/MainPage.vue'
+
 const vuetify = createVuetify({
   components,
   directives,
 })
 
-createApp(App).use(vuetify).mount('#app')
+const routes = [
+    { name: 'Home', path: '/', component: MainPage },
+    { name: 'Persons', path: '/persons', component: ListPerson },
+]
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+})
+
+
+createApp(App).use(router).use(vuetify).mount('#app')

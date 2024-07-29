@@ -11,4 +11,18 @@
     h1 {
       margin-bottom: 20px;
     }
-  }
+
+    &__form-person {
+      display: flex;
+      flex-direction: column;
+      padding: 50px 100px;
+      border: 2px solid grey;
+      margin-bottom: 20px;
+      grid-gap: 10px;
+      width: 1000px;
+    }
+
+    &__hidden_space {
+      opacity: 0.3;
+    }
+}
