@@ -6,7 +6,7 @@
         <v-list lines="three">
           <v-list-item
             v-for="person in persons"
-            :key="persons[person]"
+            :key="person.id"
             :title="name"
           >
             <person-info :name="person.firstName"></person-info>
