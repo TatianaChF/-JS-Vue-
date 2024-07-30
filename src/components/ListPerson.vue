@@ -9,7 +9,9 @@
             :key="person.id"
             :title="name"
           >
-            <person-info :person="person" @remove-person="(id) => {
+            <person-info 
+              :person="person" 
+              @remove-person="(id) => {
                 persons = persons.filter(person => person.id != id);
               }"></person-info>
           </v-list-item>
