@@ -9,7 +9,9 @@
             :key="person.id"
             :title="name"
           >
-            <person-info :name="person.firstName"></person-info>
+            <person-info :person="person" @remove-person="(id) => {
+                persons = persons.filter(person => person.id != id);
+              }"></person-info>
           </v-list-item>
         </v-list>
       </v-card>
@@ -54,7 +56,4 @@ const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
 
-const removePerson = () => {
-
-}
 </script>
