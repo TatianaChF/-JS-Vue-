@@ -19,6 +19,7 @@
   <FormPerson
     v-if="isOpen"
     :open="isOpen"
+    :id="persons.length"
     @change-open="isOpen = false"
     @add-person="(person) => {
         persons.push(person);
@@ -45,6 +46,7 @@ let persons = ref([
 
 defineProps({
   open: Boolean,
+  id: Number,
   name: String,
 });
 
