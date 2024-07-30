@@ -2,7 +2,7 @@
   <div :class="changeStyles">
     <div class="container__form-person">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900">
+      <v-card max-width="900" v-if="persons.length > 0">
         <v-list lines="three">
           <v-list-item
             v-for="person in persons"
@@ -15,6 +15,7 @@
           </v-list-item>
         </v-list>
       </v-card>
+      <p v-else>Список людей пуст</p>
     </div>
     <v-btn variant="tonal">Дальше!</v-btn>
   </div>
