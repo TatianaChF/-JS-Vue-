@@ -17,11 +17,12 @@
 <script setup>
 import { ref } from 'vue';
 
-const props = defineProps(["open"]);
+const props = defineProps(["open", "id"]);
 let person = ref({
-  id: null,
+  id: props.id + 1,
   firstName: ""
 });
+
 </script>
 
 <style lang="scss" scoped>
