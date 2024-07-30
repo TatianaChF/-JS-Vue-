@@ -3,11 +3,11 @@
     <v-sheet class="mx-auto" width="300">
       <v-form class="form" @submit.prevent>
         <v-text-field
-          v-model="firstName"
+          v-model="person.firstName"
           :rules="rules"
           label="Имя"
         ></v-text-field>
-        <v-btn class="mt-2" type="submit" variant="tonal" @click="$emit('addPerson', firstName)" block>Добавить</v-btn>
+        <v-btn class="mt-2" type="submit" variant="tonal" @click="$emit('addPerson', person)" block>Добавить</v-btn>
       </v-form>
     </v-sheet>
     <v-btn variant="text" @click="$emit('changeOpen')">x</v-btn>
@@ -17,8 +17,12 @@
 <script setup>
 import { ref } from 'vue';
 
-const props = defineProps(["open"]);
-let firstName = ref("");
+const props = defineProps(["open", "id"]);
+let person = ref({
+  id: props.id + 1,
+  firstName: ""
+});
+
 </script>
 
 <style lang="scss" scoped>
