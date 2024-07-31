@@ -23,6 +23,10 @@ let person = ref({
   firstName: ""
 });
 
+const rules = [
+  (v) => !!v || "Это поле обязательно"
+]; 
+
 </script>
 
 <style lang="scss" scoped>
