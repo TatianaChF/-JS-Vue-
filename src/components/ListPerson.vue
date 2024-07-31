@@ -19,7 +19,9 @@
       </v-card>
       <p v-else>Список людей пуст</p>
     </div>
-    <v-btn variant="tonal">Дальше!</v-btn>
+    <RouterLink to="/dishes">
+      <v-btn variant="tonal">Дальше!</v-btn>
+    </RouterLink>
   </div>
   <FormPerson
     v-if="isOpen"
@@ -41,6 +43,7 @@ import { ref, computed } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
+import { RouterLink } from "vue-router";
 
 let isOpen = ref(false);
 const personsStore = usePersonsStore();
