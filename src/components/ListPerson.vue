@@ -2,7 +2,7 @@
   <div :class="changeStyles">
     <div class="container__form-person">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="3 > 0">
+      <v-card max-width="900" v-if="personsStore.persons.length > 0">
         <v-list lines="three">
           <v-list-item
             v-for="person in personsStore.persons"
@@ -11,8 +11,8 @@
           >
             <person-info 
               :person="person" 
-              @remove-person="(id) => {
-                persons = persons.filter(person => person.id != id);
+              @remove-person="(name) => {
+                personsStore.deletePerson(name)
               }"></person-info>
           </v-list-item>
         </v-list>
@@ -26,8 +26,8 @@
     :open="isOpen"
     @change-open="isOpen = false"
     @add-person="(person) => {
-        persons.push(person);
-        isOpen = false;
+      personsStore.addPersonName(person);
+      isOpen = false;
     }"
   ></FormPerson>
 </template>
