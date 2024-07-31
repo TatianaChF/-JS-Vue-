@@ -15,6 +15,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import ListPerson from './components/ListPerson.vue'
 import MainPage from './components/MainPage.vue'
+import DishesPage from './components/DishesPage.vue'
 
 const vuetify = createVuetify({
   components,
@@ -24,6 +25,7 @@ const vuetify = createVuetify({
 const routes = [
     { name: 'Home', path: '/', component: MainPage },
     { name: 'Persons', path: '/persons', component: ListPerson },
+    { name: 'Dishes', path: '/dishes', component: DishesPage },
 ]
 
 const router = createRouter({
