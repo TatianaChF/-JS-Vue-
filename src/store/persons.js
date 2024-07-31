@@ -4,16 +4,15 @@ import { computed, ref } from 'vue';
 export const usePersonsStore = defineStore('persons', {
     state: () => ({
         persons: ['A', 'B', 'C']
-    })
+    }),
+    actions: {
+        addPersonName(name) {
+            this.persons.push(name);
+        },
 
-})
-
-/* let persons = ref(['A', 'B', 'C']);
-
-    function addPersonName(name) {
-        persons.push(name);
+        deletePerson(name) {
+            this.persons = this.persons.filter(person => person !== name);
+        }
     }
 
-    function deletePerson(name) {
-        persons = persons.filter(person => person !== name);
-    } */
+})
