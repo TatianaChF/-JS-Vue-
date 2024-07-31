@@ -2,17 +2,17 @@
   <div :class="changeStyles">
     <div class="container__form-person">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="persons.length > 0">
+      <v-card max-width="900" v-if="personsStore.persons.length > 0">
         <v-list lines="three">
           <v-list-item
-            v-for="person in persons"
-            :key="person.id"
+            v-for="person in personsStore.persons"
+            :key="person"
             :title="name"
           >
             <person-info 
               :person="person" 
-              @remove-person="(id) => {
-                persons = persons.filter(person => person.id != id);
+              @remove-person="(name) => {
+                personsStore.deletePerson(name)
               }"></person-info>
           </v-list-item>
         </v-list>
@@ -24,11 +24,10 @@
   <FormPerson
     v-if="isOpen"
     :open="isOpen"
-    :id="persons.length"
     @change-open="isOpen = false"
     @add-person="(person) => {
-        persons.push(person);
-        isOpen = false;
+      personsStore.addPersonName(person);
+      isOpen = false;
     }"
   ></FormPerson>
 </template>
@@ -41,13 +40,10 @@
 import { ref, computed } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
+import { usePersonsStore } from "./../store/persons";
 
 let isOpen = ref(false);
-let persons = ref([
-    {id: 1, firstName: 'A'},
-    {id: 2, firstName: 'B'},
-    {id: 3, firstName: 'C'}
-]);
+const personsStore = usePersonsStore();
 
 defineProps({
   open: Boolean,

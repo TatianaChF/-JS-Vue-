@@ -3,7 +3,7 @@
     <v-sheet class="mx-auto" width="300">
       <v-form class="form" @submit.prevent>
         <v-text-field
-          v-model="person.firstName"
+          v-model="person"
           :rules="rules"
           label="Имя"
         ></v-text-field>
@@ -18,10 +18,11 @@
 import { ref } from 'vue';
 
 const props = defineProps(["open", "id"]);
-let person = ref({
-  id: props.id + 1,
-  firstName: ""
-});
+let person = ref("");
+
+const rules = [
+  (v) => !!v || "Это поле обязательно"
+]; 
 
 </script>
 

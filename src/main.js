@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
 // Vuetify
 import 'vuetify/styles'
@@ -10,7 +11,7 @@ import * as directives from 'vuetify/directives'
 import App from './App.vue'
 
 
-import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import ListPerson from './components/ListPerson.vue'
 import MainPage from './components/MainPage.vue'
@@ -30,5 +31,7 @@ const router = createRouter({
     routes,
 })
 
+const pinia = createPinia()
 
-createApp(App).use(router).use(vuetify).mount('#app')
+
+createApp(App).use(router).use(vuetify).use(pinia).mount('#app')
