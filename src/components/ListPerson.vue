@@ -41,6 +41,7 @@
 import { ref, computed } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
+import { usePersonsStore } from "./../store/persons";
 
 let isOpen = ref(false);
 let persons = ref([
@@ -48,6 +49,7 @@ let persons = ref([
     {id: 2, firstName: 'B'},
     {id: 3, firstName: 'C'}
 ]);
+const personStore = usePersonsStore();
 
 defineProps({
   open: Boolean,
