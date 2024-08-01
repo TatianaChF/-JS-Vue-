@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-sheet class="mx-auto" width="300">
+    <v-sheet class="mx-auto" width="500">
       <v-form class="form" @submit.prevent>
         <v-text-field v-model="person" :rules="rules" label="Название блюда" />
         <v-text-field v-model="person" :rules="rules" label="Цена" />
@@ -33,3 +33,15 @@ import { usePersonsStore } from "./../store/persons";
 
 const personsStore = usePersonsStore();
 </script>
+
+<style lang="scss" scoped>
+.form {
+  padding: 20px 30px;
+  border: 1px solid grey;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+</style>
