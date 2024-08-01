@@ -1,6 +1,6 @@
 <template>
   <v-container class="container container__form">
-    <v-btn text="Добавить блюдо" />
+    <v-btn @click="isOpenFormDishes = true" text="Добавить блюдо" />
     <dishes-info v-for="dish in dishes" :dish="dish"></dishes-info>
     <div class="container__form__btns">
       <v-btn text="Назад" />
