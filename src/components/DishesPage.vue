@@ -7,9 +7,9 @@
         <v-btn text="Назад" />
         <v-btn text="Рассчитать" />
       </div>
-      <v-card class="h4-dish-page">
+      <v-card>
         <h4>Итог:</h4>
-        <h4 class="h4-red">0</h4>
+        <h4>0</h4>
       </v-card>
     </v-container>
   </div>
