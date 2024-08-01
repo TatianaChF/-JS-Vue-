@@ -1,21 +1,26 @@
 <template>
-  <v-container class="container container__form">
-    <v-btn @click="isOpenFormDishes = true" text="Добавить блюдо" />
-    <dishes-info v-for="dish in dishes" :dish="dish"></dishes-info>
-    <div class="container__form__btns">
-      <v-btn text="Назад" />
-      <v-btn text="Рассчитать" />
-    </div>
-    <v-card class="h4-dish-page">
-      <h4>Итог:</h4>
-      <h4 class="h4-red">0</h4>
-    </v-card>
-  </v-container>
-  <form-dishes v-if="isOpenFormDishes" @change-open-form-dishes="isOpenFormDishes=false" />
+  <div :class="changeStyles">
+    <v-container class="container container__form">
+      <v-btn @click="isOpenFormDishes = true" text="Добавить блюдо" />
+      <dishes-info v-for="dish in dishes" :dish="dish"></dishes-info>
+      <div class="container__form__btns">
+        <v-btn text="Назад" />
+        <v-btn text="Рассчитать" />
+      </div>
+      <v-card class="h4-dish-page">
+        <h4>Итог:</h4>
+        <h4 class="h4-red">0</h4>
+      </v-card>
+    </v-container>
+  </div>
+  <form-dishes
+    v-if="isOpenFormDishes"
+    @change-open-form-dishes="isOpenFormDishes = false"
+  />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import DishesInfo from "./DishesInfo.vue";
 import FormDishes from "./FormDishes.vue";
 
@@ -26,27 +31,31 @@ let dishes = ref([
     name: "Блюдо 1",
     payer: "A",
     whoEat: ["A", "B"],
-    price: 100
+    price: 100,
   },
   {
     id: 2,
     name: "Блюдо 2",
     payer: "A",
     whoEat: ["B", "C"],
-    price: 30
+    price: 30,
   },
   {
     id: 3,
     name: "Блюдо 3",
     payer: "A",
     whoEat: ["A", "C"],
-    price: 500
-  }
+    price: 500,
+  },
 ]);
 
 defineProps({
-  dish: Object
-})
+  dish: Object,
+});
+
+const changeStyles = computed(() => {
+  return isOpenFormDishes.value ? "container container__hidden_space" : "container";
+});
 </script>
 
 <style lang="scss" scoped>
