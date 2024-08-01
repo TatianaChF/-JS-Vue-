@@ -11,7 +11,7 @@
       <h4 class="h4-red">0</h4>
     </v-card>
   </v-container>
-  <form-dishes />
+  <form-dishes v-if="isOpenFormDishes" />
 </template>
 
 <script setup>
@@ -19,6 +19,7 @@ import { ref } from "vue";
 import DishesInfo from "./DishesInfo.vue";
 import FormDishes from "./FormDishes.vue";
 
+let isOpenFormDishes = ref(false);
 let dishes = ref([
   {
     id: 1,
