@@ -4,8 +4,12 @@
       <v-form class="form" @submit.prevent>
         <v-text-field v-model="person" :rules="rules" label="Название блюда" />
         <v-text-field v-model="person" :rules="rules" label="Цена" />
-        <v-select :items="personsStore.persons.map((person) => person)" label="Кто платил?" />
-          <v-btn-toggle>
+        <v-select
+          :items="personsStore.persons.map((person) => person)"
+          label="Кто платил?"
+        />
+        <v-btn-toggle>
+          <p>Кто ел?</p>
           <div v-for="(person, index) in personsStore.persons" :key="index">
             <v-btn>{{ person }}</v-btn>
           </div>
