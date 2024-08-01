@@ -24,7 +24,7 @@
         >
       </v-form>
     </v-sheet>
-    <v-btn variant="text" @click="$emit('changeOpen')">x</v-btn>
+    <v-btn variant="text" @click="$emit('changeOpenFormDishes')">x</v-btn>
   </div>
 </template>
 

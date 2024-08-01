@@ -11,7 +11,7 @@
       <h4 class="h4-red">0</h4>
     </v-card>
   </v-container>
-  <form-dishes v-if="isOpenFormDishes" />
+  <form-dishes v-if="isOpenFormDishes" @change-open-form-dishes="isOpenFormDishes=false" />
 </template>
 
 <script setup>
