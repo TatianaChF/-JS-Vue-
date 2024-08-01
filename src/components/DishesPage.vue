@@ -1,7 +1,7 @@
 <template>
   <v-container class="container container__form">
     <v-btn text="Добавить блюдо" />
-    <p v-for="dish in dishes">{{ dish.name }}</p>
+    <dishes-info v-for="dish in dishes" :dish="dish"></dishes-info>
     <div class="container__form__btns">
       <v-btn text="Назад" />
       <v-btn text="Рассчитать" />
@@ -15,6 +15,7 @@
 
 <script setup>
 import { ref } from "vue";
+import DishesInfo from "./DishesInfo.vue";
 
 let dishes = ref([
   {
@@ -22,20 +23,27 @@ let dishes = ref([
     name: "Блюдо 1",
     payer: "A",
     whoEat: ["A", "B"],
+    price: 100
   },
   {
     id: 2,
     name: "Блюдо 2",
     payer: "A",
     whoEat: ["B", "C"],
+    price: 30
   },
   {
     id: 3,
     name: "Блюдо 3",
     payer: "A",
     whoEat: ["A", "C"],
+    price: 500
   }
 ]);
+
+defineProps({
+  dish: Object
+})
 </script>
 
 <style lang="scss" scoped>
