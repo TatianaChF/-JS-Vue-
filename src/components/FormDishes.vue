@@ -20,7 +20,7 @@
           class="mt-2"
           type="submit"
           variant="tonal"
-          @click="$emit('addDish', dish, rules)"
+          @click="$emit('addDish', dish)"
           :disabled="!isRules"
           block
           >Добавить</v-btn
