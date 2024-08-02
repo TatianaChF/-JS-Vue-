@@ -2,7 +2,13 @@
   <div :class="changeStyles">
     <v-container class="container container__form">
       <v-btn @click="isOpenFormDishes = true" variant="tonal" text="Добавить блюдо" />
-      <dish-info v-for="dish in dishes" :key="dish" :dish="dish"></dish-info>
+      <dish-info 
+        v-for="dish in dishes" 
+        :key="dish" 
+        :dish="dish"
+        @remove-dish="(dish) => {
+          dishes.value = dishes.value.filter(dish => dish !== dish.name)
+        }"></dish-info>
       <div class="container__form__btns">
         <v-btn text="Назад" />
         <v-btn text="Рассчитать" />
@@ -27,6 +33,7 @@
 import { ref, computed } from "vue";
 import DishInfo from "./DishInfo.vue";
 import FormDishes from "./FormDishes.vue";
+import { useDishesStore } from "./../store/dishes";
 
 let isOpenFormDishes = ref(false);
 let dishes = ref([
@@ -52,6 +59,7 @@ let dishes = ref([
     price: 500,
   },
 ]);
+const dishesStore = useDishesStore();
 const totalPrice = computed(() => {
   for(let i = 0; i < dishes.value.length; i++) {
     return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
