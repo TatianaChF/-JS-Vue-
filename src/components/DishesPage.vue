@@ -18,6 +18,7 @@
     @change-open-form-dishes="isOpenFormDishes = false"
     @add-dish="(dish) => {
       dishes.push(dish);
+      isOpenFormDishes = false;
     }"
   />
 </template>
