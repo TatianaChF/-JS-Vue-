@@ -2,7 +2,7 @@
   <div :class="changeStyles">
     <v-container class="container container__form">
       <v-btn @click="isOpenFormDishes = true" variant="tonal" text="Добавить блюдо" />
-      <dishes-info v-for="dish in dishes" :key="dish" :dish="dish"></dishes-info>
+      <dish-info v-for="dish in dishes" :key="dish" :dish="dish"></dish-info>
       <div class="container__form__btns">
         <v-btn text="Назад" />
         <v-btn text="Рассчитать" />
@@ -25,7 +25,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import DishesInfo from "./DishesInfo.vue";
+import DishInfo from "./DishInfo.vue";
 import FormDishes from "./FormDishes.vue";
 
 let isOpenFormDishes = ref(false);
