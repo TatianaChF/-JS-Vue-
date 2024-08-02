@@ -51,6 +51,14 @@ const onClickAddWhoEat = () => {
     }
   }
 }
+
+const rules = [
+  (v) => !!v || "Поле обязательно для заполнения",
+  (v) =>
+    (!isNaN(parseFloat(v)) && isFinite(v)) || "Значение должно быть числом",
+  (v) => (v && v > 0) || "Цена не может быть отрицательным числом или равной нулю",
+];
+
 </script>
 
 <style lang="scss" scoped>
