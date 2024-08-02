@@ -29,9 +29,17 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { usePersonsStore } from "./../store/persons";
 
 const personsStore = usePersonsStore();
+let dish = ref({
+  id: 0,
+  name: "",
+  payer: "",
+  whoEat: [],
+  price: 0
+})
 </script>
 
 <style lang="scss" scoped>
