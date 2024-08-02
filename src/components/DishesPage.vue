@@ -18,7 +18,7 @@
       </div>
       <v-card>
         <h4>Итог:</h4>
-        <h4>{{ totalPrice }}</h4>
+        <h4>{{ dishesStore.totalPrice }}</h4>
       </v-card>
     </v-container>
   </div>
@@ -40,11 +40,6 @@ import { useDishesStore } from "./../store/dishes";
 
 let isOpenFormDishes = ref(false);
 const dishesStore = useDishesStore();
-const totalPrice = computed(() => {
-  for(let i = 0; i < dishesStore.dishes.length; i++) {
-    return dishesStore.dishes.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
-  }
-})
 
 defineProps({
   dish: Object,
