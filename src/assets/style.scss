@@ -7,12 +7,13 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin-top: 3%;
 
     h1 {
       margin-bottom: 20px;
     }
 
-    &__form-person {
+    &__form {
       display: flex;
       flex-direction: column;
       padding: 50px 100px;
@@ -20,6 +21,12 @@
       margin-bottom: 20px;
       grid-gap: 10px;
       width: 1000px;
+
+      &__btns {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+      }
     }
 
     &__hidden_space {

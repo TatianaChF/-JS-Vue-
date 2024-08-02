@@ -1,6 +1,6 @@
 <template>
   <div :class="changeStyles">
-    <div class="container__form-person">
+    <div class="container__form">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
       <v-card max-width="900" v-if="personsStore.persons.length > 0">
         <v-list lines="three">
@@ -19,7 +19,9 @@
       </v-card>
       <p v-else>Список людей пуст</p>
     </div>
-    <v-btn variant="tonal">Дальше!</v-btn>
+    <RouterLink to="/dishes">
+      <v-btn variant="tonal">Дальше!</v-btn>
+    </RouterLink>
   </div>
   <FormPerson
     v-if="isOpen"
@@ -41,6 +43,7 @@ import { ref, computed } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
+import { RouterLink } from "vue-router";
 
 let isOpen = ref(false);
 const personsStore = usePersonsStore();
