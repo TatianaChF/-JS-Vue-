@@ -13,7 +13,7 @@
       </v-container>
       <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
-        <v-btn text="Назад" />
+        <v-btn @click="router.push({name: 'Persons'})" text="Назад" />
         <v-btn text="Рассчитать" />
       </div>
       <v-card>
@@ -37,9 +37,11 @@ import { ref, computed } from "vue";
 import DishInfo from "./DishInfo.vue";
 import FormDishes from "./FormDishes.vue";
 import { useDishesStore } from "./../store/dishes";
+import { useRouter } from "vue-router";
 
 let isOpenFormDishes = ref(false);
 const dishesStore = useDishesStore();
+const router = useRouter();
 
 defineProps({
   dish: Object,
