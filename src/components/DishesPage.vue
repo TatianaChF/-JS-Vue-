@@ -9,7 +9,7 @@
       </div>
       <v-card>
         <h4>Итог:</h4>
-        <h4>0</h4>
+        <h4>{{ totalPrice }}</h4>
       </v-card>
     </v-container>
   </div>
@@ -52,6 +52,11 @@ let dishes = ref([
     price: 500,
   },
 ]);
+const totalPrice = computed(() => {
+  for(let i = 0; i < dishes.value.length; i++) {
+    return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
+  }
+})
 
 defineProps({
   dish: Object,
