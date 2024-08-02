@@ -6,9 +6,11 @@
         v-for="dish in dishesStore.dishes" 
         :key="dish" 
         :dish="dish"
+        v-if="dishesStore.dishes.length > 0"
         @remove-dish="(dish) => {
           dishesStore.removeDish(dish)
         }"></dish-info>
+        <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
         <v-btn text="Назад" />
         <v-btn text="Рассчитать" />
