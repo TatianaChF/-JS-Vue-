@@ -19,7 +19,7 @@
           class="mt-2"
           type="submit"
           variant="tonal"
-          @click="console.log(dish)"
+          @click="$emit('addDish', dish)"
           block
           >Добавить</v-btn
         >

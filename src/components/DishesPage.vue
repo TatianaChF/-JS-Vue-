@@ -16,6 +16,9 @@
   <form-dishes
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
+    @add-dish="(dish) => {
+      dishes.push(dish);
+    }"
   />
 </template>
 
