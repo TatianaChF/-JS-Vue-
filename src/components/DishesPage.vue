@@ -2,15 +2,16 @@
   <div :class="changeStyles">
     <v-container class="container container__form">
       <v-btn @click="isOpenFormDishes = true" variant="tonal" text="Добавить блюдо" />
-      <dish-info 
-        v-for="dish in dishesStore.dishes" 
-        :key="dish" 
-        :dish="dish"
-        v-if="dishesStore.dishes.length > 0"
-        @remove-dish="(dish) => {
-          dishesStore.removeDish(dish)
-        }"></dish-info>
-        <p v-else>Список блюд пуст</p>
+      <v-container v-if="dishesStore.dishes.length > 0">
+        <dish-info 
+          v-for="dish in dishesStore.dishes" 
+          :key="dish" 
+          :dish="dish"
+          @remove-dish="(dish) => {
+            dishesStore.removeDish(dish)
+          }"></dish-info>
+      </v-container>
+      <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
         <v-btn text="Назад" />
         <v-btn text="Рассчитать" />
