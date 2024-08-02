@@ -3,11 +3,11 @@
     <v-container class="container container__form">
       <v-btn @click="isOpenFormDishes = true" variant="tonal" text="Добавить блюдо" />
       <dish-info 
-        v-for="dish in dishes" 
+        v-for="dish in dishesStore.dishes" 
         :key="dish" 
         :dish="dish"
         @remove-dish="(dish) => {
-          dishes.value = dishes.value.filter(dish => dish !== dish.name)
+          dishesStore.removeDish(dish)
         }"></dish-info>
       <div class="container__form__btns">
         <v-btn text="Назад" />
@@ -23,7 +23,7 @@
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
     @add-dish="(dish) => {
-      dishes.push(dish);
+      dishesStore.addDish(dish);
       isOpenFormDishes = false;
     }"
   />
@@ -36,33 +36,10 @@ import FormDishes from "./FormDishes.vue";
 import { useDishesStore } from "./../store/dishes";
 
 let isOpenFormDishes = ref(false);
-let dishes = ref([
-  {
-    id: 1,
-    name: "Блюдо 1",
-    payer: "A",
-    whoEat: ["A", "B"],
-    price: 100,
-  },
-  {
-    id: 2,
-    name: "Блюдо 2",
-    payer: "A",
-    whoEat: ["B", "C"],
-    price: 30,
-  },
-  {
-    id: 3,
-    name: "Блюдо 3",
-    payer: "A",
-    whoEat: ["A", "C"],
-    price: 500,
-  },
-]);
 const dishesStore = useDishesStore();
 const totalPrice = computed(() => {
-  for(let i = 0; i < dishes.value.length; i++) {
-    return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
+  for(let i = 0; i < dishesStore.dishes.length; i++) {
+    return dishesStore.dishes.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
   }
 })
 
