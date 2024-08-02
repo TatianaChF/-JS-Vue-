@@ -8,6 +8,7 @@
           :items="personsStore.persons.map((person) => person)"
           label="Кто платил?"
           v-model="dish.payer"
+          :rules="selectRules"
         />
         <v-btn-toggle v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
@@ -62,6 +63,10 @@ const priceRules = [
   (v) =>
     (!isNaN(parseFloat(v)) && isFinite(v)) || "Значение должно быть числом",
   (v) => (v && v > 0) || "Цена не может быть отрицательным числом или равной нулю",
+]
+
+const selectRules = [
+  (v) => !!v || 'Выберите значение'
 ]
 
 </script>
