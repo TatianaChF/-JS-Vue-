@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <v-sheet class="mx-auto" width="500">
-      <v-form class="form" @submit.prevent>
+      <v-form class="form" v-model="isRules" @submit.prevent>
         <v-text-field v-model="dish.name" :rules="rules" label="Название блюда" />
         <v-text-field v-model="dish.price" :rules="rules" label="Цена" />
         <v-select
@@ -19,7 +19,8 @@
           class="mt-2"
           type="submit"
           variant="tonal"
-          @click="$emit('addDish', dish)"
+          @click="$emit('addDish', dish, rules)"
+          :disabled="!isRules"
           block
           >Добавить</v-btn
         >
@@ -42,6 +43,7 @@ let dish = ref({
   price: 0
 })
 let toggleMultiple = ref([]);
+let isRules = ref(false);
 
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
