@@ -2,8 +2,8 @@
   <div class="container">
     <v-sheet class="mx-auto" width="500">
       <v-form class="form" v-model="isRules" @submit.prevent>
-        <v-text-field v-model="dish.name" :rules="rules" label="Название блюда" />
-        <v-text-field v-model="dish.price" :rules="rules" label="Цена" />
+        <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
+        <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
         <v-select
           :items="personsStore.persons.map((person) => person)"
           label="Кто платил?"
@@ -54,12 +54,15 @@ const onClickAddWhoEat = () => {
   }
 }
 
-const rules = [
-  (v) => !!v || "Поле обязательно для заполнения",
+const nameRules = [
+  (v) => !!v || "Поле обязательно для заполнения"
+];
+
+const priceRules = [
   (v) =>
     (!isNaN(parseFloat(v)) && isFinite(v)) || "Значение должно быть числом",
   (v) => (v && v > 0) || "Цена не может быть отрицательным числом или равной нулю",
-];
+]
 
 </script>
 
