@@ -1,13 +1,19 @@
 <template>
   <div class="container">
     <v-sheet class="mx-auto" width="300">
-      <v-form class="form" @submit.prevent>
+      <v-form class="form" v-model="isRules" @submit.prevent>
         <v-text-field
           v-model="person"
           :rules="rules"
           label="Имя"
         ></v-text-field>
-        <v-btn class="mt-2" type="submit" variant="tonal" @click="$emit('addPerson', person)" block>Добавить</v-btn>
+        <v-btn 
+          class="mt-2" 
+          type="submit" 
+          variant="tonal" 
+          @click="$emit('addPerson', person)" 
+          :disabled="!isRules"
+          block>Добавить</v-btn>
       </v-form>
     </v-sheet>
     <v-btn variant="text" @click="$emit('changeOpen')">x</v-btn>
@@ -19,6 +25,7 @@ import { ref } from 'vue';
 
 const props = defineProps(["open", "id"]);
 let person = ref("");
+const isRules = ref(false);
 
 const rules = [
   (v) => !!v || "Это поле обязательно"

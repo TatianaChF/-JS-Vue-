@@ -12,10 +12,10 @@
       </div>
       <div class="info__person">
         <h4>Кто ел?</h4>
-        <p v-for="person in dish.whoEat">{{ person }}</p>
+        <p v-for="(person, index) in dish.whoEat" :key="index">{{ person }}</p>
       </div>
     </v-card>
-    <v-btn class="container__card__btn">
+    <v-btn class="container__card__btn" @click="$emit('removeDish', props.dish.name)">
       <v-icon icon="mdi-delete"></v-icon>
     </v-btn>
   </v-container>

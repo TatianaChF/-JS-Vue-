@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue';
 
 export const usePersonsStore = defineStore('persons', {
     state: () => ({
