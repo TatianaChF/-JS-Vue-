@@ -43,14 +43,13 @@ let dish = ref({
 })
 let toggleMultiple = ref([]);
 
+// добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
-  console.log(toggleMultiple.value);
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
     if (!dish.value.whoEat.includes(personsStore.persons[toggleMultiple.value[i]])) {
       dish.value.whoEat.push(personsStore.persons[toggleMultiple.value[i]]);
     }
   }
-  console.log(dish.value.whoEat);
 }
 </script>
 
