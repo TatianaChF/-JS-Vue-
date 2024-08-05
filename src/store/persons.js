@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
 
 export const usePersonsStore = defineStore('persons', {
-    state: () => ({
-        persons: ['A', 'B', 'C']
-    }),
+    state: () => {
+        const personsData = localStorage.getItem('personsData');
+        return {
+            personsName: personsData || []
+        }
+    },
     actions: {
         addPersonName(name) {
-            this.persons.push(name);
+            this.personsName.push(name);
         },
 
         deletePerson(name) {
-            this.persons = this.persons.filter(person => person !== name);
+            this.personsName = this.personsName.filter(person => person !== name);
         }
     }
 
