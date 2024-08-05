@@ -2,11 +2,11 @@
   <div :class="changeStyles">
     <div class="container__form">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="personsStore.personsName.length > 0">
+      <v-card max-width="900" v-if="personsList.length > 0">
         <v-list lines="three">
           <v-list-item
-            v-for="person in personsStore.personsName"
-            :key="person"
+            v-for="person in personsList"
+            :key="person.id"
             :title="name"
           >
             <person-info 
