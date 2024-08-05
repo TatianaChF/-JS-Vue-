@@ -41,7 +41,7 @@ import { ref, computed } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
-import { RouterLink, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 let isOpen = ref(false);
 const personsStore = usePersonsStore();
