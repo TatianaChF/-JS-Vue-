@@ -1,12 +1,14 @@
 <template>
     <div class="container">
         <h1>Разделить чек</h1>
-        <RouterLink to="/persons">Начать</RouterLink>
+        <v-btn @click="router.push({name: 'Persons'})" variant="tonal">Начать</v-btn>
     </div>
 </template>
 
 <script setup>
-    import { RouterLink } from 'vue-router';
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
 </script>
 
 <style lang="scss" scoped>
