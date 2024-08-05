@@ -14,7 +14,7 @@
       <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
         <v-btn @click="router.push({name: 'Persons'})" text="Назад" />
-        <v-btn text="Рассчитать" />
+        <v-btn @click="router.push({name: 'Results'})" text="Рассчитать" />
       </div>
       <v-card>
         <h4>Итог:</h4>
