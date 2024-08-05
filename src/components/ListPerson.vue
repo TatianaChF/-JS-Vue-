@@ -42,8 +42,11 @@ import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
+import { loadFromLocalStorage } from "../localStore";
+import { uuid } from "uuidv4";
 
 let isOpen = ref(false);
+let personsList = ref(loadFromLocalStorage(key) || [{ id: uuid(), name: "" }] )
 const personsStore = usePersonsStore();
 const router = useRouter();
 
