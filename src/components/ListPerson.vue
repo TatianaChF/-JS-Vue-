@@ -26,7 +26,8 @@
     :open="isOpen"
     @change-open="isOpen = false"
     @add-person="(person) => {
-      updatePersonsList(index, person);
+      person = {id: uuidv4(), name: person}
+      personsList.push(person)
       isOpen = false;
     }"
   ></FormPerson>
@@ -37,76 +38,35 @@
 </style>
 
 <script setup>
-import { ref, computed, onMounted, onUpdated } from "vue";
+import { ref, computed, onMounted, onUpdated, watch } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
-import { loadFromLocalStorage, saveToLocalStorage } from "../localStore";
 import { v4 as uuidv4 } from 'uuid';
 
 const key = "personsData";
 let isOpen = ref(false);
-let personsList = ref(loadFromLocalStorage(key) );
-let isPersonAdd = ref(false);
+let personsList = ref([]);
 const personsStore = usePersonsStore();
 const router = useRouter();
+const personsLocalStorage = localStorage.getItem(key);
+
+if (personsLocalStorage) {
+  personsList.value = JSON.parse(personsLocalStorage)._value;
+} 
 
 defineProps({
   open: Boolean,
-  id: Number,
   name: String,
 });
+
+watch(() => personsList, (store) => {
+  localStorage.setItem(key, JSON.stringify(store))
+}, {deep: true}) 
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
-
-onMounted(() => {
-  if (!localStorage.getItem(key)) {
-    saveToLocalStorage(
-      key, 
-      personsList.value?.map((person) => ({id: person.id, name: person.name})))
-  }
-  uploadingLocalData();
-  updateIsPersonAdd();
-})
-
-onUpdated(() => {
-  uploadingLocalData();
-  updateIsPersonAdd();
-})
-
-//выгружаем данные из локального хранилища
-const uploadingLocalData = () => {
-  const data = loadFromLocalStorage(key);
-
-  if (data) {
-    personsList.value = data
-  }
-
-//добавляем данные в стор
-  for (let i = 0; i < personsList.value?.length; i++) {
-    personsStore.addPersonName(personsList.value[i]);
-  }
-}
-
-const updateIsPersonAdd = () => {
-  let count = 0;
-
-  for (let i = 0; i < personsList.value?.length; i++) {
-    if (personsList.value[i].name != "") count++
-  }
-
-  isPersonAdd.value = personsList.value?.length > 0 && count === personsList.value?.length;
-}
-
-//обновление списка пользователей
-const updatePersonsList = (index, newPerson) => {
-  personsList.value[index].name = newPerson;
-  saveToLocalStorage(key, personsList.value);
-  updateIsPersonAdd();
-}
-
 
 </script>
