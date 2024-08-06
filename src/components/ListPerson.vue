@@ -47,7 +47,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const key = "personsData";
 let isOpen = ref(false);
-let personsList = ref(loadFromLocalStorage(key) )
+let personsList = ref(loadFromLocalStorage(key) );
+let isPersonAdd = ref(false);
 const personsStore = usePersonsStore();
 const router = useRouter();
 
@@ -68,6 +69,7 @@ onMounted(() => {
       personsList.value?.map((person) => ({id: person.id, name: person.name})))
   }
   uploadingLocalData();
+  updateIsPersonAdd();
 })
 
 //выгружаем данные из локального хранилища
@@ -82,6 +84,16 @@ const uploadingLocalData = () => {
   for (let i = 0; i < personsList.value?.length; i++) {
     personsStore.addPersonName(personsList.value[i]);
   }
+}
+
+const updateIsPersonAdd = () => {
+  let count = 0;
+
+  for (let i = 0; i < personsList.value.length; i++) {
+    if (personsList.value[i].name != "") count++
+  }
+
+  isPersonAdd.value = personsList.value.length > 0 && count === personsList.value.length;
 }
 
 </script>
