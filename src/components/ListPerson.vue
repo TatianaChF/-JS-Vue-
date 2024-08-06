@@ -11,8 +11,8 @@
           >
             <person-info 
               :person="person" 
-              @remove-person="(name) => {
-                personsStore.deletePerson(name)
+              @remove-person="(personId) => {
+                personsStore.deletePerson(personId)
               }"></person-info>
           </v-list-item>
         </v-list>
@@ -54,6 +54,7 @@ const personsLocalStorage = localStorage.getItem(key);
 
 if (personsLocalStorage) {
   personsList.value = JSON.parse(personsLocalStorage)._value;
+  console.log(personsStore.persons)
 } 
 
 defineProps({
@@ -68,5 +69,10 @@ watch(() => personsList, (store) => {
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
+
+/* const onClickRemovePerson = (personId) => {
+  personsList.value.filter((person) => person.id != personId);
+  //personsStore.deletePerson(personId);
+} */
 
 </script>
