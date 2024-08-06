@@ -12,7 +12,7 @@
             <person-info 
               :person="person" 
               @remove-person="(personId) => {
-                personsStore.deletePerson(personId)
+               // personsList.value.splice(personId, 1)
               }"></person-info>
           </v-list-item>
         </v-list>
@@ -54,7 +54,7 @@ const personsLocalStorage = localStorage.getItem(key);
 
 if (personsLocalStorage) {
   personsList.value = JSON.parse(personsLocalStorage)._value;
-  console.log(personsStore.persons)
+  console.log(personsList.value.splice('tanya',1))
 } 
 
 defineProps({
