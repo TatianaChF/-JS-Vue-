@@ -26,7 +26,7 @@
     :open="isOpen"
     @change-open="isOpen = false"
     @add-person="(person) => {
-      personsStore.addPersonName(person);
+      updatePersonsList(index, person);
       isOpen = false;
     }"
   ></FormPerson>
@@ -37,7 +37,7 @@
 </style>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUpdated } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
@@ -72,6 +72,11 @@ onMounted(() => {
   updateIsPersonAdd();
 })
 
+onUpdated(() => {
+  uploadingLocalData();
+  updateIsPersonAdd();
+})
+
 //выгружаем данные из локального хранилища
 const uploadingLocalData = () => {
   const data = loadFromLocalStorage(key);
@@ -89,11 +94,19 @@ const uploadingLocalData = () => {
 const updateIsPersonAdd = () => {
   let count = 0;
 
-  for (let i = 0; i < personsList.value.length; i++) {
+  for (let i = 0; i < personsList.value?.length; i++) {
     if (personsList.value[i].name != "") count++
   }
 
-  isPersonAdd.value = personsList.value.length > 0 && count === personsList.value.length;
+  isPersonAdd.value = personsList.value?.length > 0 && count === personsList.value?.length;
 }
+
+//обновление списка пользователей
+const updatePersonsList = (index, newPerson) => {
+  personsList.value[index].name = newPerson;
+  saveToLocalStorage(key, personsList.value);
+  updateIsPersonAdd();
+}
+
 
 </script>
