@@ -1,5 +1,5 @@
 <template>
-  <p>{{ props.person }}</p>
+  <p>{{ props.person.name }}</p>
   <div>
     <v-btn @click="$emit('removePerson', props.person )">
       <v-icon icon="mdi-delete"></v-icon>
