@@ -4,12 +4,12 @@ export const usePersonsStore = defineStore('persons', {
     state: () => {
         const personsData = localStorage.getItem('personsData');
         return {
-            personsName: personsData || []
+            persons: personsData || []
         }
     },
     actions: {
-        addPersonName(name) {
-            this.personsName.push(name);
+        addPerson(person) {
+            this.persons.push(person);
         },
 
         deletePerson(name) {
