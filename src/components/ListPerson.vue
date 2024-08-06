@@ -60,4 +60,26 @@ defineProps({
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
+
+onMounted(() => {
+  if (!localStorage.getItem(key)) {
+    saveToLocalStorage(
+      key, 
+      personsList.value.map((person) => ({id: person.id, name: person.name})))
+  }
+})
+
+//выгружаем данные из локального хранилища
+const uploadingLocalData = () => {
+  const data = loadFromLocalStorage(key);
+
+  if (data) {
+    personsList.value = data
+  }
+
+//добавляем данных в стор
+  for (let i = 0; i < personsList.value.length; i++) {
+    personsStore.addPersonName(personsList.value[i]);
+  }
+}
 </script>
