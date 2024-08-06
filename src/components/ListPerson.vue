@@ -45,6 +45,7 @@ import { useRouter } from "vue-router";
 import { loadFromLocalStorage } from "../localStore";
 import { v4 as uuidv4 } from 'uuid';
 
+const key = "personsData";
 let isOpen = ref(false);
 let personsList = ref(loadFromLocalStorage(key) || [{ id: uuidv4(), name: "" }] )
 const personsStore = usePersonsStore();
