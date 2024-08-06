@@ -2,7 +2,7 @@
   <div :class="changeStyles">
     <div class="container__form">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="personsList.length > 0">
+      <v-card max-width="900" v-if="personsList?.length > 0">
         <v-list lines="three">
           <v-list-item
             v-for="person in personsList"
@@ -37,17 +37,17 @@
 </style>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
-import { loadFromLocalStorage } from "../localStore";
+import { loadFromLocalStorage, saveToLocalStorage } from "../localStore";
 import { v4 as uuidv4 } from 'uuid';
 
 const key = "personsData";
 let isOpen = ref(false);
-let personsList = ref(loadFromLocalStorage(key) || [{ id: uuidv4(), name: "" }] )
+let personsList = ref(loadFromLocalStorage(key) )
 const personsStore = usePersonsStore();
 const router = useRouter();
 
@@ -60,5 +60,4 @@ defineProps({
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
-
 </script>
