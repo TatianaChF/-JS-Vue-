@@ -9,27 +9,34 @@
             :key="person.id"
             :title="name"
           >
-            <person-info 
-              :person="person" 
-              @remove-person="(personId) => {
-               // personsList.value.splice(personId, 1)
-              }"></person-info>
+            <person-info
+              :person="person"
+              @remove-person="
+                (name) => {
+                  onClickRemovePerson(name);
+                }
+              "
+            ></person-info>
           </v-list-item>
         </v-list>
       </v-card>
       <p v-else>Список людей пуст</p>
     </div>
-    <v-btn @click="router.push({name: 'Dishes'})" variant="tonal">Дальше!</v-btn>
+    <v-btn @click="router.push({ name: 'Dishes' })" variant="tonal"
+      >Дальше!</v-btn
+    >
   </div>
   <FormPerson
     v-if="isOpen"
     :open="isOpen"
     @change-open="isOpen = false"
-    @add-person="(person) => {
-      person = {id: uuidv4(), name: person}
-      personsList.push(person)
-      isOpen = false;
-    }"
+    @add-person="
+      (person) => {
+        person = { id: uuidv4(), name: person };
+        personsList.push(person);
+        isOpen = false;
+      }
+    "
   ></FormPerson>
 </template>
 
@@ -43,7 +50,7 @@ import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const key = "personsData";
 let isOpen = ref(false);
@@ -54,25 +61,28 @@ const personsLocalStorage = localStorage.getItem(key);
 
 if (personsLocalStorage) {
   personsList.value = JSON.parse(personsLocalStorage)._value;
-  console.log(personsList.value.splice('tanya',1))
-} 
+}
 
 defineProps({
   open: Boolean,
   name: String,
 });
 
-watch(() => personsList, (store) => {
-  localStorage.setItem(key, JSON.stringify(store))
-}, {deep: true}) 
+watch(
+  () => personsList,
+  (store) => {
+    localStorage.setItem(key, JSON.stringify(store));
+  },
+  { deep: true }
+);
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
 
-/* const onClickRemovePerson = (personId) => {
-  personsList.value.filter((person) => person.id != personId);
-  //personsStore.deletePerson(personId);
-} */
-
+const onClickRemovePerson = (nameRemove) => {
+  personsList.value = personsList.value.filter(
+    (person) => person.name !== nameRemove
+  );
+};
 </script>
