@@ -58,8 +58,8 @@ onMounted(() => {
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
-    if (!dish.value.whoEat.includes(personsStore.persons[toggleMultiple.value[i]])) {
-      dish.value.whoEat.push(personsStore.persons[toggleMultiple.value[i]]);
+    if (!dish.value.whoEat.includes(personsNames.value[toggleMultiple.value[i]].name)) {
+      dish.value.whoEat.push(personsNames.value[toggleMultiple.value[i]].name);
     }
   }
 }
