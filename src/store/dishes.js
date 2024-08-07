@@ -7,7 +7,7 @@ export const useDishesStore = defineStore('dishes', {
             dishes: dishesData || []
         }
     },
-    getters: {
+    /*getters: {
         totalPrice: (state) => {
             if(state.dishes.length == 0) return 0
             else {
@@ -16,7 +16,7 @@ export const useDishesStore = defineStore('dishes', {
                 }
             }
         }
-    },
+    },*/
     actions: {
         addDish(dish) {
             this.dishes.push(dish);
