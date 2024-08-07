@@ -45,7 +45,7 @@
 </style>
 
 <script setup>
-import { ref, computed, onMounted, onUpdated, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
