@@ -5,7 +5,7 @@
         <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
         <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
         <v-select
-          :items="personsNames.map((person) => person)"
+          :items="personsNames.map((person) => person.name)"
           label="Кто платил?"
           v-model="dish.payer"
           :rules="selectRules"
@@ -13,7 +13,7 @@
         <v-btn-toggle v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
           <div v-for="(person, index) in personsNames" :key="index">
-            <v-btn @click="onClickAddWhoEat">{{ person }}</v-btn>
+            <v-btn @click="onClickAddWhoEat">{{ person.name }}</v-btn>
           </div>
         </v-btn-toggle>
         <v-btn
