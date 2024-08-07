@@ -84,5 +84,6 @@ const onClickRemovePerson = (nameRemove) => {
   personsList.value = personsList.value.filter(
     (person) => person.name !== nameRemove
   );
+  personsStore.deletePerson(nameRemove);
 };
 </script>
