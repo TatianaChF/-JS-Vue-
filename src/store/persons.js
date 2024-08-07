@@ -10,13 +10,10 @@ export const usePersonsStore = defineStore('persons', {
     actions: {
         addPerson(person) {
             this.persons.push(person);
-            console.log(this.person)
         },
 
-        deletePerson(id) {
-            console.log(id)
-            console.log(this.persons)
-            this.persons = this.persons.filter(person => person.id !== id)
+        deletePerson(name) {
+            this.persons = this.persons.filter(person => person.name !== name)
         }
     }
 
