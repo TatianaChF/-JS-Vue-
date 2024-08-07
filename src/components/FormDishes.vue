@@ -5,14 +5,14 @@
         <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
         <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
         <v-select
-          :items="personsStore.persons.map((person) => person)"
+          :items="personsNames.map((person) => person)"
           label="Кто платил?"
           v-model="dish.payer"
           :rules="selectRules"
         />
         <v-btn-toggle v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
-          <div v-for="(person, index) in personsStore.persons" :key="index">
+          <div v-for="(person, index) in personsNames" :key="index">
             <v-btn @click="onClickAddWhoEat">{{ person }}</v-btn>
           </div>
         </v-btn-toggle>
@@ -32,19 +32,28 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { usePersonsStore } from "./../store/persons";
 
 const personsStore = usePersonsStore();
 let dish = ref({
-  id: 0,
+  id: "",
   name: "",
   payer: "",
   whoEat: [],
   price: 0
 })
 let toggleMultiple = ref([]);
+const personsNames = ref([]);
 let isRules = ref(false);
+
+onMounted(() => {
+  if (personsStore.persons.length) {
+    personsNames.value = JSON.parse(personsStore.persons)._value;
+  } else {
+    personsNames.value = JSON.parse(localStorage.getItem("personsData"))._value;
+  }
+})
 
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
