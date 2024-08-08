@@ -1,46 +1,44 @@
 import { defineStore } from 'pinia'
+import { computed, ref, watch } from 'vue'
 
-export const useDishesStore = defineStore('dishes', {
-    state: () => ({
-        dishes: [{
-            id: 1,
-            name: "Блюдо 1",
-            payer: "A",
-            whoEat: ["A", "B"],
-            price: 100
-        }, 
-        {
-            id: 2,
-            name: "Блюдо 2",
-            payer: "A",
-            whoEat: ["B", "C"],
-            price: 30
-        }, {
-            id: 3,
-            name: "Блюдо 3",
-            payer: "A",
-            whoEat: ["A", "C"],
-            price: 500
-        }],
-    }),
-    getters: {
-        totalPrice: (state) => {
-            if(state.dishes.length == 0) return 0
-            else {
-                for(let i = 0; i < state.dishes.length; i++) {
-                    return state.dishes.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
-                }
-            }
-        }
-    },
-    actions: {
-        addDish(dish) {
-            this.dishes.push(dish);
-        },
+export const useDishesStore = defineStore('dishesData', () => {
+    const dishes = ref([]);
 
-        removeDish(dishName) {
-            this.dishes = this.dishes.filter(dish => dish.name !== dishName);
-        }
+    const dishesLocalStorage = localStorage.getItem("dishesData");
+
+    if (dishesLocalStorage) {
+        dishes.value = JSON.parse(dishesLocalStorage)._value;
     }
 
+    const totalPrice = computed(() => {
+        if(dishes.value.length == 0) return 0
+        else {
+            for (let i = 0; i < dishes.value.length; i++) {
+                return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
+            }
+        }
+    })
+
+    const addDish = (dish) => {
+        dishes.value.push(dish);
+    }
+
+    const removeDish = (dishName) => {
+        dishes.value = dishes.value.filter(dish => dish.name !== dishName) 
+    }
+
+    watch(
+        () => dishes,
+        (store) => {
+        localStorage.setItem("dishesData", JSON.stringify(store));
+        },
+        { deep: true }
+    );
+
+    return {
+        dishes,
+        addDish,
+        removeDish,
+        totalPrice
+    }
 })

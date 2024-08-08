@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "pinia": "^2.2.0",
+    "uuid": "^10.0.0",
+    "uuidv4": "^6.2.13",
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.31",
     "vue-router": "^4.4.0",

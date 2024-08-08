@@ -1,17 +1,30 @@
 import { defineStore } from 'pinia'
+import { ref, watch } from 'vue'
 
-export const usePersonsStore = defineStore('persons', {
-    state: () => ({
-        persons: ['A', 'B', 'C']
-    }),
-    actions: {
-        addPersonName(name) {
-            this.persons.push(name);
-        },
+export const usePersonsStore = defineStore('personsData', () => {
+    const persons = ref([]);
 
-        deletePerson(name) {
-            this.persons = this.persons.filter(person => person !== name);
-        }
+    const personsLocalStorage = localStorage.getItem("personsData");
+
+    if (personsLocalStorage) {
+        persons.value = JSON.parse(personsLocalStorage)._value;
     }
 
-})
+    const addPerson = (person) => {
+        persons.value.push(person);
+    }
+
+    const removePerson = (name) => {
+        persons.value = persons.value.filter(person => person.name !== name);
+    }
+
+    watch(
+        () => persons,
+        (state) => {
+            localStorage.setItem("personsData", JSON.stringify(state));
+        },
+        { deep: true }
+    );
+
+    return {persons, addPerson, removePerson}
+}) 
