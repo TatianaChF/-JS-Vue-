@@ -50,8 +50,8 @@
           price: dish.price,
         };
         dishesList.push(newDish);
-        dishesStore.addDish(newDish);
         isOpenFormDishes = false;
+        dishesStore.addDish(newDish);
       }
     "
   />
