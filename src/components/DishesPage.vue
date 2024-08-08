@@ -88,6 +88,7 @@ watch(
   { deep: true }
 );
 
+// функция удаления блюда 
 const onClickRemoveDish = (dishName) => {
   dishesList.value = dishesList.value.filter((dish) => dish.name !== dishName);
   dishesStore.removeDish(dishName);

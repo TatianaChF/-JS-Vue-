@@ -80,6 +80,7 @@ const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
 
+// функция удаления пользователя
 const onClickRemovePerson = (nameRemove) => {
   personsList.value = personsList.value.filter(
     (person) => person.name !== nameRemove
