@@ -2,10 +2,10 @@
   <div :class="changeStyles">
     <div class="container__form">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="personsList?.length > 0">
+      <v-card max-width="900" v-if="personsStore.persons.length > 0">
         <v-list lines="three">
           <v-list-item
-            v-for="person in personsList"
+            v-for="person in personsStore.persons"
             :key="person.id"
             :title="name"
           >
@@ -13,7 +13,7 @@
               :person="person"
               @remove-person="
                 (name) => {
-                  onClickRemovePerson(name);
+                  personsStore.removePerson(name);
                 }
               "
             ></person-info>
@@ -33,7 +33,7 @@
     @add-person="
       (person) => {
         person = { id: uuidv4(), name: person };
-        personsList.push(person);
+        personsStore.addPerson(person);
         isOpen = false;
       }
     "
@@ -52,39 +52,18 @@ import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
 import { v4 as uuidv4 } from "uuid";
 
-const key = "personsData";
 let isOpen = ref(false);
-let personsList = ref([]);
 const personsStore = usePersonsStore();
 const router = useRouter();
-const personsLocalStorage = localStorage.getItem(key);
-
-if (personsLocalStorage) {
-  personsList.value = JSON.parse(personsLocalStorage)._value;
-}
 
 defineProps({
   open: Boolean,
   name: String,
 });
 
-watch(
-  () => personsList,
-  (store) => {
-    localStorage.setItem(key, JSON.stringify(store));
-  },
-  { deep: true }
-);
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
 
-// функция удаления пользователя
-const onClickRemovePerson = (nameRemove) => {
-  personsList.value = personsList.value.filter(
-    (person) => person.name !== nameRemove
-  );
-  personsStore.deletePerson(nameRemove);
-};
 </script>

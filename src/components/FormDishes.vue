@@ -5,14 +5,14 @@
         <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
         <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
         <v-select
-          :items="personsNames.map((person) => person.name)"
+          :items="personsStore.persons.map((person) => person.name)"
           label="Кто платил?"
           v-model="dish.payer"
           :rules="selectRules"
         />
         <v-btn-toggle v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
-          <div v-for="(person, index) in personsNames" :key="index">
+          <div v-for="(person, index) in personsStore.persons" :key="index">
             <v-btn @click="onClickAddWhoEat">{{ person.name }}</v-btn>
           </div>
         </v-btn-toggle>
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import {  ref } from "vue";
 import { usePersonsStore } from "./../store/persons";
 
 const personsStore = usePersonsStore();
@@ -44,22 +44,13 @@ let dish = ref({
   price: 0
 })
 let toggleMultiple = ref([]);
-const personsNames = ref([]);
 let isRules = ref(false);
-
-onMounted(() => {
-  if (personsStore.persons.length) {
-    personsNames.value = JSON.parse(personsStore.persons)._value;
-  } else {
-    personsNames.value = JSON.parse(localStorage.getItem("personsData"))._value;
-  }
-})
 
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
-    if (!dish.value.whoEat.includes(personsNames.value[toggleMultiple.value[i]].name)) {
-      dish.value.whoEat.push(personsNames.value[toggleMultiple.value[i]].name);
+    if (!dish.value.whoEat.includes(personsStore.persons[toggleMultiple.value[i]].name)) {
+      dish.value.whoEat.push(personsStore.persons[toggleMultiple.value[i]].name);
     }
   }
 }

@@ -22,15 +22,13 @@ const router = useRouter();
 const personsStore = usePersonsStore();
 const dishesStore = useDishesStore();
 const results = ref([]);
-const dishesData = JSON.parse(dishesStore.dishes)._value;
-const personsData = JSON.parse(personsStore.persons)._value;
 
 // цикл, в котором высчитывается, кто сколько должен
-for (let i = 0; i < personsData.length; i++) {
-  let currentPerson = personsData[i].name;
+for (let i = 0; i < personsStore.persons.length; i++) {
+  let currentPerson = personsStore.persons[i].name;
   let total = 0;
-  for (let j = 0; j < dishesData.length; j++) {
-    let currentDish = dishesData[j];
+  for (let j = 0; j < dishesStore.dishes.length; j++) {
+    let currentDish = dishesStore.dishes[j];
     let prcieForOne = currentDish.price / currentDish.whoEat.length;
 
     if (currentDish.whoEat.includes(currentPerson)) {
@@ -38,7 +36,7 @@ for (let i = 0; i < personsData.length; i++) {
     }
   }
 
-  let result = `${currentPerson} должен ${total} рублей`;
+  let result = `${currentPerson} должен ${total.toFixed(2)} рублей`;
   results.value.push(result);
 }
 </script>

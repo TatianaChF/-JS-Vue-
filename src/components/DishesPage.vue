@@ -6,14 +6,14 @@
         variant="tonal"
         text="Добавить блюдо"
       />
-      <v-container v-if="dishesList.length > 0">
+      <v-container v-if="dishesStore.dishes.length > 0">
         <dish-info
-          v-for="dish in dishesList"
+          v-for="dish in dishesStore.dishes"
           :key="dish"
           :dish="dish"
           @remove-dish="
             (dish) => {
-              onClickRemoveDish(dish);
+              dishesStore.removeDish(dish)
             }
           "
         ></dish-info>
@@ -49,9 +49,8 @@
           whoEat: dish.whoEat,
           price: dish.price,
         };
-        dishesList.push(newDish);
-        isOpenFormDishes = false;
         dishesStore.addDish(newDish);
+        isOpenFormDishes = false;
       }
     "
   />
@@ -66,27 +65,12 @@ import { useRouter } from "vue-router";
 import { v4 as uuidv4 } from "uuid";
 
 let isOpenFormDishes = ref(false);
-const dishesList = ref([]);
 const dishesStore = useDishesStore();
 const router = useRouter();
-const key = "dishesData";
-const dishesLocalStorage = localStorage.getItem(key);
-
-if (dishesLocalStorage) {
-  dishesList.value = JSON.parse(dishesLocalStorage)._value;
-}
 
 defineProps({
   dish: Object,
 });
-
-watch(
-  () => dishesList,
-  (store) => {
-    localStorage.setItem(key, JSON.stringify(store));
-  },
-  { deep: true }
-);
 
 // функция удаления блюда 
 const onClickRemoveDish = (dishName) => {
