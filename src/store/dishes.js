@@ -7,16 +7,16 @@ export const useDishesStore = defineStore('dishes', {
             dishes: dishesData || []
         }
     },
-    /*getters: {
+    getters: {
         totalPrice: (state) => {
             if(state.dishes.length == 0) return 0
             else {
                 for(let i = 0; i < state.dishes.length; i++) {
-                    return state.dishes.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
+                    return JSON.parse(state.dishes)._value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
                 }
             }
         }
-    },*/
+    },
     actions: {
         addDish(dish) {
             this.dishes.push(dish);
