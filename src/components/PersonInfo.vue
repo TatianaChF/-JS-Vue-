@@ -1,10 +1,14 @@
 <template>
+<v-template class="person-container">
+<v-container class="person-card">
   <p>{{ props.person.name }}</p>
-  <div>
-    <v-btn @click="removePerson">
+</v-container>
+<div>
+    <v-btn class="person-container__btn" @click="removePerson" variant="text">
       <v-icon icon="mdi-delete"></v-icon>
     </v-btn>
-  </div>
+</div>
+</v-template>
 </template>
 
 <script setup>
@@ -18,3 +22,7 @@ const removePerson = () => {
   emits("removePerson", personName.value);
 }
 </script>
+
+<style lang="scss" scoped>
+@import "./../assets/style.scss";
+</style>

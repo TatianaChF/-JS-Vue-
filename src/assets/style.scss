@@ -1,13 +1,30 @@
+$card-color: #eae7dc;
+$btns-color: #d8c3a5;
+$border-color: #8e8d8a;
+
+.main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     margin-top: 3%;
+    width: 80%;
+    margin-left: 120px;
 
     h1 {
       margin-bottom: 20px;
@@ -16,21 +33,163 @@
     &__form {
       display: flex;
       flex-direction: column;
-      padding: 50px 100px;
-      border: 2px solid grey;
       margin-bottom: 20px;
       grid-gap: 10px;
-      width: 1000px;
+      background-color: $card-color;
+      border-radius: 10px;
+
+      &__btn {
+        position: relative;
+        margin-left: 35%;
+        margin-top: 30px;
+        background: $btns-color;
+        width: 30%;
+      }
 
       &__btns {
-        width: 30%;
         display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
+        justify-content: space-around;
+        width: 40%;
+        margin-bottom: 20px;
       }
+    }
+
+    &__card-person {
+      background-color: $card-color;
+      margin-bottom: 20px;
+      margin-left: 100px;
+    }
+
+    &__list-person {
+      background-color: $card-color;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-left: 83px;
+    }
+
+    &__result {
+      background-color: $border-color;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      height: 40px;
     }
 
     &__hidden_space {
       opacity: 0.3;
     }
+}
+
+.form {
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__add-person {
+    padding: 20px 30px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background: $card-color;
+  }
+
+  &__btn-toggle {
+    display: flex;
+    gap: 10px;
+
+    &__btn {
+      border-radius: 5px;
+
+      &__color {
+        background-color: #e98074;
+        color: white;
+      }
+    }
+  }
+}
+
+.btn {
+  background-color: $btns-color;
+
+  &__main {
+    background-color: #e85a4f;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.person-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 238px;
+  width: 48%;
+  
+  .person-card {
+    padding: 8px;
+    background-color: $card-color;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    font-size: 18px;
+  }
+
+  &__btn {
+    background-color: $card-color;
+  }
+}
+
+.dishes {
+  &__card {
+    padding: 20px 40px;
+    width: 80%;
+    margin-left: 40px;
+    background-color: $card-color;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+  }
+
+  &__container-card {
+    display: flex;
+    justify-content: space-between;
+
+    &__btn {  
+        align-self: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    width: 60%;
+    gap: 15px;
+  }
+}
+
+.results {
+  &__card {
+    background-color: $card-color;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 20px 0;
+      font-size: 26px;
+      color: #e85a4f;
+    }
+  }
+
+  &__text {
+    margin-bottom: 20px;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+  }
 }

@@ -2,6 +2,7 @@
   <div :class="changeStyles">
     <v-container class="container container__form">
       <v-btn
+        class="container__form__btn"
         @click="isOpenFormDishes = true"
         variant="tonal"
         text="Добавить блюдо"
@@ -21,19 +22,21 @@
       <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
         <v-btn
+          class="btn"
           @click="router.push({ name: 'Persons' })"
           text="Назад"
           variant="tonal"
         />
         <v-btn
+          class="btn"
           @click="router.push({ name: 'Results' })"
           text="Рассчитать"
           variant="tonal"
         />
       </div>
-      <v-card>
+      <v-card class="container__result">
         <h4>Итог:</h4>
-        <h4>{{ dishesStore.totalPrice }}</h4>
+        <h4>{{ dishesStore.totalPrice }} рублей</h4>
       </v-card>
     </v-container>
   </div>

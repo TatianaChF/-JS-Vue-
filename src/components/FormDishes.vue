@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="form form__container">
     <v-sheet class="mx-auto" width="500">
-      <v-form class="form" v-model="isRules" @submit.prevent>
+      <v-form class="form form__add-person" v-model="isRules" @submit.prevent>
         <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
         <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
         <v-select
@@ -10,14 +10,14 @@
           v-model="dish.payer"
           :rules="selectRules"
         />
-        <v-btn-toggle v-model="toggleMultiple" multiple>
+        <v-btn-toggle class="form__btn-toggle" v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
-          <div v-for="(person, index) in personsStore.persons" :key="index">
-            <v-btn @click="onClickAddWhoEat">{{ person.name }}</v-btn>
+          <div class="form__btn-toggle__btn" v-for="(person, index) in personsStore.persons" :key="index">
+            <v-btn class="form__btn-toggle__btn__color" @click="onClickAddWhoEat">{{ person.name }}</v-btn>
           </div>
         </v-btn-toggle>
         <v-btn
-          class="mt-2"
+          class="btn" 
           type="submit"
           variant="tonal"
           @click="$emit('addDish', dish)"
@@ -72,17 +72,5 @@ const selectRules = [
 </script>
 
 <style lang="scss" scoped>
-.form {
-  padding: 20px 30px;
-  border: 1px solid grey;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+@import "./../assets/style.scss";
 </style>
