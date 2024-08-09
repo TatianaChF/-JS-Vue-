@@ -8,7 +8,7 @@
           label="Имя"
         ></v-text-field>
         <v-btn 
-          class="mt-2" 
+          class="btn" 
           type="submit" 
           variant="tonal" 
           @click="$emit('addPerson', person)" 
