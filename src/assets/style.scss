@@ -1,6 +1,6 @@
 $card-color: #eae7dc;
 $btns-color: #d8c3a5;
-$text-color: #8e8d8a;
+$border-color: #8e8d8a;
 
 .container {
     display: flex;
@@ -69,4 +69,24 @@ $text-color: #8e8d8a;
 
 .btn {
   background-color: $btns-color;
+}
+
+.percon-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 238px;
+  width: 48%;
+  
+  .percon-card {
+    padding: 8px;
+    background-color: $card-color;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    font-size: 18px;
+  }
+
+  &__btn {
+    background-color: $card-color;
+  }
 }
