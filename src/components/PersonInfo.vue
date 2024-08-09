@@ -1,10 +1,10 @@
 <template>
-<v-template class="percon-container">
-<v-container class="percon-card">
+<v-template class="person-container">
+<v-container class="person-card">
   <p>{{ props.person.name }}</p>
 </v-container>
 <div>
-    <v-btn class="percon-container__btn" @click="removePerson" variant="text">
+    <v-btn class="person-container__btn" @click="removePerson" variant="text">
       <v-icon icon="mdi-delete"></v-icon>
     </v-btn>
 </div>
