@@ -1,6 +1,6 @@
 <template>
   <div :class="changeStyles">
-    <div class="container__form">
+    <v-card class="container__form">
       <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
       <v-card max-width="900" v-if="personsStore.persons.length > 0">
         <v-list lines="three">
@@ -21,7 +21,7 @@
         </v-list>
       </v-card>
       <p v-else>Список людей пуст</p>
-    </div>
+    </v-card>
     <v-btn @click="router.push({ name: 'Dishes' })" variant="tonal"
       >Дальше!</v-btn
     >
