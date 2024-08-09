@@ -21,13 +21,21 @@ $border-color: #8e8d8a;
       margin-bottom: 20px;
       grid-gap: 10px;
       background-color: $card-color;
+      border-radius: 10px;
 
-      &__btns {
+      &__btn {
         position: relative;
         margin-left: 35%;
         margin-top: 30px;
         background: $btns-color;
         width: 30%;
+      }
+
+      &__btns {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        margin-bottom: 20px;
       }
     }
 
@@ -43,6 +51,17 @@ $border-color: #8e8d8a;
       text-align: center;
       margin-bottom: 20px;
       margin-left: 83px;
+    }
+
+    &__result {
+      background-color: $border-color;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      height: 40px;
     }
 
     &__hidden_space {
@@ -62,7 +81,7 @@ $border-color: #8e8d8a;
 
   &__add-person {
     padding: 20px 30px;
-    border: 1px solid grey;
+    border: 1px solid $border-color;
     border-radius: 5px;
     background: $card-color;
   }
@@ -89,5 +108,31 @@ $border-color: #8e8d8a;
 
   &__btn {
     background-color: $card-color;
+  }
+}
+
+.dishes {
+  &__card {
+    padding: 20px 40px;
+    width: 80%;
+    margin-left: 40px;
+    background-color: $card-color;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+  }
+
+  &__container-card {
+    display: flex;
+    justify-content: space-between;
+
+    &__btn {  
+        align-self: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    width: 60%;
+    gap: 15px;
   }
 }

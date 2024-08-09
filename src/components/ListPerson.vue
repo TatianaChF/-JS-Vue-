@@ -1,7 +1,7 @@
 <template>
   <div :class="changeStyles">
     <v-card class="container__form">
-      <v-btn class="container__form__btns" @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
+      <v-btn class="container__form__btn" @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
         <v-list class="container container__list-person" lines="three" v-if="personsStore.persons.length > 0">
           <v-list-item 
             v-for="person in personsStore.persons"
