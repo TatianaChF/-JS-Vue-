@@ -103,16 +103,22 @@ $border-color: #8e8d8a;
 
 .btn {
   background-color: $btns-color;
+
+  &__home {
+    background-color: #e85a4f;
+    color: white;
+    font-weight: bold;
+  }
 }
 
-.percon-container {
+.person-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-left: 238px;
   width: 48%;
   
-  .percon-card {
+  .person-card {
     padding: 8px;
     background-color: $card-color;
     border-radius: 10px;
@@ -149,5 +155,26 @@ $border-color: #8e8d8a;
     width: 60%;
     gap: 15px;
   }
+}
 
+.results {
+  &__card {
+    background-color: $card-color;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 20px 0;
+      font-size: 26px;
+      color: #e85a4f;
+    }
+  }
+
+  &__text {
+    margin-bottom: 20px;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+  }
 }
