@@ -10,7 +10,7 @@
     </v-card>
     <div class="container__form__btns">
       <v-btn class="btn" @click="router.push({ name: 'Dishes' })" text="Назад"></v-btn>
-      <v-btn class="btn__home" @click="router.push({ name: 'Home' })" text="На главную"></v-btn>
+      <v-btn class="btn__main" @click="router.push({ name: 'Home' })" text="На главную"></v-btn>
     </div>
   </v-container>
 </template>
