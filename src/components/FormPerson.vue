@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="form form__container">
     <v-sheet class="mx-auto" width="300">
-      <v-form class="form" v-model="isRules" @submit.prevent>
+      <v-form class="form form__add-person" v-model="isRules" @submit.prevent>
         <v-text-field
           v-model="person"
           :rules="rules"
@@ -34,10 +34,7 @@ const rules = [
 </script>
 
 <style lang="scss" scoped>
-.form {
-  padding: 20px 30px;
-  border: 1px solid grey;
-}
+@import "./../assets/style.scss";
 
 .container {
   display: flex;

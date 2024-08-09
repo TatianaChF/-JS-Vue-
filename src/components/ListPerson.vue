@@ -1,9 +1,9 @@
 <template>
   <div :class="changeStyles">
     <v-card class="container__form">
-      <v-btn @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-      <v-card max-width="900" v-if="personsStore.persons.length > 0">
-        <v-list lines="three">
+      <v-btn class="container__form__btns" @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
+      <v-card class="container container__card-person" max-width="900" v-if="personsStore.persons.length > 0">
+        <v-list class="container container__list-person" lines="three">
           <v-list-item
             v-for="person in personsStore.persons"
             :key="person.id"
@@ -22,11 +22,11 @@
       </v-card>
       <p v-else>Список людей пуст</p>
     </v-card>
-    <v-btn @click="router.push({ name: 'Dishes' })" variant="tonal"
+    <v-btn class="btn" @click="router.push({ name: 'Dishes' })" variant="tonal"
       >Дальше!</v-btn
     >
   </div>
-  <FormPerson
+  <form-person
     v-if="isOpen"
     :open="isOpen"
     @change-open="isOpen = false"
@@ -37,7 +37,7 @@
         isOpen = false;
       }
     "
-  ></FormPerson>
+  />
 </template>
 
 <style lang="scss" scoped>
