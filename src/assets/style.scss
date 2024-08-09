@@ -1,13 +1,11 @@
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     margin-top: 3%;
+    width: 60%;
+    margin-left: 250px;
 
     h1 {
       margin-bottom: 20px;
@@ -16,11 +14,9 @@
     &__form {
       display: flex;
       flex-direction: column;
-      padding: 50px 100px;
       border: 2px solid grey;
       margin-bottom: 20px;
       grid-gap: 10px;
-      width: 1000px;
 
       &__btns {
         width: 30%;
