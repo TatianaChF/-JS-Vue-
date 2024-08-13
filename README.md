@@ -1,6 +1,7 @@
-# Project setup
+### Project setup
 
-`# yarn
+```
+# yarn
 yarn
 
 # npm
@@ -10,11 +11,13 @@ npm install
 pnpm install
 
 # bun
-bun install`
+bun install
+```
 
-# Compiles and hot-reloads for development
+### Compiles and hot-reloads for development
 
-`# yarn
+```
+# yarn
 yarn dev
 
 # npm
@@ -24,11 +27,13 @@ npm run dev
 pnpm dev
 
 # bun
-bun run dev`
+bun run dev
+```
 
-# Compiles and minifies for production
+### Compiles and minifies for production
 
-`# yarn
+```
+# yarn
 yarn build
 
 # npm
@@ -38,11 +43,13 @@ npm run build
 pnpm build
 
 # bun
-bun run build`
+bun run build
+```
 
-# Lints and fixes files
+### Lints and fixes files
 
-`# yarn
+```
+# yarn
 yarn lint
 
 # npm
@@ -52,4 +59,5 @@ npm run lint
 pnpm lint
 
 # bun
-bun run lint`
+bun run lint
+```
