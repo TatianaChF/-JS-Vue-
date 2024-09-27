@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
+import { v4 as uuidv4 } from "uuid";
 
 export const usePersonsStore = defineStore('personsData', () => {
     const persons = ref([]);
@@ -10,8 +11,11 @@ export const usePersonsStore = defineStore('personsData', () => {
         persons.value = JSON.parse(personsLocalStorage)._value;
     }
 
-    const addPerson = (person) => {
-        persons.value.push(person);
+    const addPerson = (personName) => {
+        persons.value.push({
+            id: uuidv4(), 
+            name: personName,
+        })
     }
 
     const removePerson = (id) => {

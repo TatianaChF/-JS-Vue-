@@ -30,7 +30,6 @@
     @change-open="isOpen = false"
     @add-person="
       (person) => {
-        person = { id: uuidv4(), name: person };
         personsStore.addPerson(person);
         isOpen = false;
       }
@@ -48,7 +47,6 @@ import FormPerson from "./FormPerson.vue";
 import PersonInfo from "./PersonInfo.vue";
 import { usePersonsStore } from "./../store/persons";
 import { useRouter } from "vue-router";
-import { v4 as uuidv4 } from "uuid";
 
 let isOpen = ref(false);
 const personsStore = usePersonsStore();
