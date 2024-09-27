@@ -3,14 +3,22 @@
     <v-card class="results__card">
       <h3>Результаты</h3>
       <v-container class="results__text">
-        <div v-for="(result, index) in results" :key="index">
+        <div 
+          v-for="(result, index) in results" 
+          :key="index">
           <p>{{ result }}</p>
         </div>
       </v-container>
     </v-card>
     <div class="container__form__btns">
-      <v-btn class="btn" @click="router.push({ name: 'Dishes' })" text="Назад"></v-btn>
-      <v-btn class="btn__main" @click="router.push({ name: 'Home' })" text="На главную"></v-btn>
+      <v-btn 
+        class="btn" 
+        :to="{ name: 'Dishes' }" 
+        text="Назад" />
+      <v-btn 
+        class="btn__main" 
+        :to="{ name: 'Home' }" 
+        text="На главную" />
     </div>
   </v-container>
 </template>

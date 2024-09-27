@@ -29,7 +29,7 @@
         />
         <v-btn
           class="btn"
-          @click="router.push({ name: 'Results' })"
+          :to="{ name: 'Results' }"
           text="Рассчитать"
           variant="tonal"
         />

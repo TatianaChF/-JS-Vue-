@@ -20,9 +20,12 @@
         </v-list>
       <p v-else>Список людей пуст</p>
     </v-card>
-    <v-btn class="btn" @click="router.push({ name: 'Dishes' })" variant="tonal"
-      >Дальше!</v-btn
-    >
+    <v-btn 
+      class="btn" 
+      :to="{ name: 'Dishes' }"
+      variant="tonal">
+      Дальше!
+    </v-btn>
   </div>
   <form-person
     v-if="isOpen"

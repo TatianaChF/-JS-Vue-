@@ -1,7 +1,12 @@
 <template>
     <div class="main-container">
         <h1>Разделить чек</h1>
-        <v-btn class="btn__main" @click="router.push({name: 'Persons'})" variant="tonal">Начать</v-btn>
+        <v-btn 
+            class="btn__main" 
+            :to="{name: 'Persons'}"
+            variant="tonal">
+            Начать
+        </v-btn>
     </div>
 </template>
 
