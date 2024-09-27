@@ -13,9 +13,7 @@ export const useDishesStore = defineStore('dishesData', () => {
     const totalPrice = computed(() => {
         if(dishes.value.length == 0) return 0
         else {
-            for (let i = 0; i < dishes.value.length; i++) {
-                return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
-            }
+            return dishes.value.reduce((acc, dish) => acc + parseFloat(dish.price), 0);
         }
     })
 
