@@ -1,23 +1,28 @@
 <template>
   <div :class="changeStyles">
     <v-card class="container__form">
-      <v-btn class="container__form__btn" @click="isOpen = true" variant="tonal">Добавить человека</v-btn>
-        <v-list class="container container__list-person" lines="three" v-if="personsStore.persons.length > 0">
-          <v-list-item 
-            v-for="person in personsStore.persons"
-            :key="person.id"
-            :title="name"
-          >
-            <person-info 
-              :person="person"
-              @remove-person="
-                (id) => {
-                  personsStore.removePerson(id);
-                }
-              "
-            ></person-info>
-          </v-list-item>
-        </v-list>
+      <v-btn 
+        class="container__form__btn" 
+        @click="isOpen = true" variant="tonal">
+        Добавить человека
+      </v-btn>
+      <v-list 
+        class="container__list-person" 
+        lines="three" 
+        v-if="personsStore.persons.length > 0">
+        <v-list-item 
+          v-for="person in personsStore.persons"
+          :key="person.id"
+          :title="name"
+        >
+          <person-info 
+            :person="person"
+            @remove-person="
+              (id) => {
+                personsStore.removePerson(id);
+              }" />
+        </v-list-item>
+      </v-list>
       <p v-else>Список людей пуст</p>
     </v-card>
     <v-btn 
