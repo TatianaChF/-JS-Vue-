@@ -52,6 +52,3 @@ for (let i = 0; i < personsStore.persons.length; i++) {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "./../assets/style.scss";
-</style>

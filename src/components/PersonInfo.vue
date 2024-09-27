@@ -22,7 +22,3 @@ const removePerson = () => {
   emits("removePerson", props.person.id);
 }
 </script>
-
-<style lang="scss" scoped>
-@import "./../assets/style.scss";
-</style>

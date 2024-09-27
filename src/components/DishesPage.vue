@@ -82,6 +82,3 @@ const changeStyles = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-@import "./../assets/style.scss";
-</style>

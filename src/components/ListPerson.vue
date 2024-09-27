@@ -45,10 +45,6 @@
   />
 </template>
 
-<style lang="scss" scoped>
-@import "./../assets/style.scss";
-</style>
-
 <script setup>
 import { ref, computed, watch } from "vue";
 import FormPerson from "./FormPerson.vue";

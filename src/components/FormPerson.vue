@@ -34,8 +34,6 @@ const rules = [
 </script>
 
 <style lang="scss" scoped>
-@import "./../assets/style.scss";
-
 .container {
   display: flex;
   flex-direction: row;
