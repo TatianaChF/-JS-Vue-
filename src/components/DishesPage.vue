@@ -75,12 +75,6 @@ defineProps({
   dish: Object,
 });
 
-// функция удаления блюда 
-const onClickRemoveDish = (dishName) => {
-  dishesList.value = dishesList.value.filter((dish) => dish.name !== dishName);
-  dishesStore.removeDish(dishName);
-};
-
 const changeStyles = computed(() => {
   return isOpenFormDishes.value
     ? "container container__hidden_space"

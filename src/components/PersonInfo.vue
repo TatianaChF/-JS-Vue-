@@ -19,7 +19,7 @@ const emits = defineEmits(["removePerson"]);
 const personName = ref(props.person.name)
 
 const removePerson = () => {
-  emits("removePerson", personName.value);
+  emits("removePerson", props.person.id);
 }
 </script>
 

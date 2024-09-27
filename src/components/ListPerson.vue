@@ -11,8 +11,8 @@
             <person-info 
               :person="person"
               @remove-person="
-                (name) => {
-                  personsStore.removePerson(name);
+                (id) => {
+                  personsStore.removePerson(id);
                 }
               "
             ></person-info>

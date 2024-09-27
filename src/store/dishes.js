@@ -23,8 +23,8 @@ export const useDishesStore = defineStore('dishesData', () => {
         dishes.value.push(dish);
     }
 
-    const removeDish = (dishName) => {
-        dishes.value = dishes.value.filter(dish => dish.name !== dishName) 
+    const removeDish = (dishId) => {
+        dishes.value = dishes.value.filter(dish => dish.id !== dishId) 
     }
 
     watch(

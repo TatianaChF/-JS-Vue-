@@ -14,8 +14,8 @@ export const usePersonsStore = defineStore('personsData', () => {
         persons.value.push(person);
     }
 
-    const removePerson = (name) => {
-        persons.value = persons.value.filter(person => person.name !== name);
+    const removePerson = (id) => {
+        persons.value = persons.value.filter(person => person.id !== id);
     }
 
     watch(

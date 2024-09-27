@@ -15,7 +15,7 @@
         <p v-for="(person, index) in dish.whoEat" :key="index">{{ person }}</p>
       </div>
     </v-card>
-    <v-btn class="dishes__container-card__btn" @click="$emit('removeDish', props.dish.name)" variant="text">
+    <v-btn class="dishes__container-card__btn" @click="$emit('removeDish', props.dish.id)" variant="text">
       <v-icon icon="mdi-delete"></v-icon>
     </v-btn>
   </v-container>
