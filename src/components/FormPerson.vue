@@ -5,15 +5,16 @@
         <v-text-field
           v-model="person"
           :rules="rules"
-          label="Имя"
-        ></v-text-field>
+          label="Имя" />
         <v-btn 
           class="btn" 
           type="submit" 
           variant="tonal" 
           @click="$emit('addPerson', person)" 
           :disabled="!isRules"
-          block>Добавить</v-btn>
+          block>
+          Добавить
+        </v-btn>
       </v-form>
     </v-sheet>
     <v-btn variant="text" @click="$emit('changeOpen')">x</v-btn>

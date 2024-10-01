@@ -5,8 +5,7 @@
         class="container__form__btn"
         @click="isOpenFormDishes = true"
         variant="tonal"
-        text="Добавить блюдо"
-      />
+        text="Добавить блюдо" />
       <v-container v-if="dishesStore.dishes.length > 0">
         <dish-info
           v-for="dish in dishesStore.dishes"
@@ -16,8 +15,7 @@
             (dish) => {
               dishesStore.removeDish(dish)
             }
-          "
-        ></dish-info>
+          " />
       </v-container>
       <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
@@ -25,14 +23,12 @@
           class="btn"
           @click="router.push({ name: 'Persons' })"
           text="Назад"
-          variant="tonal"
-        />
+          variant="tonal" />
         <v-btn
           class="btn"
           :to="{ name: 'Results' }"
           text="Рассчитать"
-          variant="tonal"
-        />
+          variant="tonal" />
       </div>
       <v-card class="container__result">
         <h4>Итог:</h4>
@@ -55,8 +51,7 @@
         dishesStore.addDish(newDish);
         isOpenFormDishes = false;
       }
-    "
-  />
+    " />
 </template>
 
 <script setup>

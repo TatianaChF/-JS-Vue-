@@ -4,8 +4,11 @@
   <p>{{ props.person.name }}</p>
 </v-container>
 <div>
-    <v-btn class="person-container__btn" @click="removePerson" variant="text">
-      <v-icon icon="mdi-delete"></v-icon>
+    <v-btn 
+      class="person-container__btn" 
+      @click="removePerson"
+      variant="text">
+      <v-icon icon="mdi-delete" />
     </v-btn>
 </div>
 </v-template>

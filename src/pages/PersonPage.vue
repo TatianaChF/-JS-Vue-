@@ -41,8 +41,7 @@
         personsStore.addPerson(person);
         isOpen = false;
       }
-    "
-  />
+    " />
 </template>
 
 <script setup>

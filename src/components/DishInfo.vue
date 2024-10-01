@@ -21,7 +21,7 @@
       class="dishes__container-card__btn" 
       @click="$emit('removeDish', props.dish.id)" 
       variant="text">
-      <v-icon icon="mdi-delete"></v-icon>
+      <v-icon icon="mdi-delete" />
     </v-btn>
   </v-container>
 </template>

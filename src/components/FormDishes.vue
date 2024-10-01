@@ -2,15 +2,23 @@
   <div class="form form__container">
     <v-sheet class="mx-auto" width="500">
       <v-form class="form form__add-person" v-model="isRules" @submit.prevent>
-        <v-text-field v-model="dish.name" :rules="nameRules" label="Название блюда" />
-        <v-text-field v-model="dish.price" :rules="priceRules" label="Цена" />
+        <v-text-field 
+          v-model="dish.name" 
+          :rules="nameRules" 
+          label="Название блюда" />
+        <v-text-field 
+          v-model="dish.price" 
+          :rules="priceRules" 
+          label="Цена" />
         <v-select
           :items="personsStore.persons.map((person) => person.name)"
           label="Кто платил?"
           v-model="dish.payer"
-          :rules="selectRules"
-        />
-        <v-btn-toggle class="form__btn-toggle" v-model="toggleMultiple" multiple>
+          :rules="selectRules" />
+        <v-btn-toggle 
+          class="form__btn-toggle" 
+          v-model="toggleMultiple"
+          multiple>
           <p>Кто ел?</p>
           <div 
             class="form__btn-toggle__btn" 
@@ -30,8 +38,9 @@
           variant="tonal"
           @click="$emit('addDish', dish)"
           :disabled="!isRules"
-          block
-          >Добавить</v-btn
+          block>
+          Добавить
+        </v-btn
         >
       </v-form>
     </v-sheet>
