@@ -11,7 +11,7 @@
           :rules="priceRules" 
           label="Цена" />
         <v-select
-          :items="persons.map((person) => person.name)"
+          :items="personsStore.persons.map((person) => person.name)"
           label="Кто платил?"
           v-model="dish.payer"
           :rules="selectRules" />
@@ -22,7 +22,7 @@
           <p>Кто ел?</p>
           <div 
             class="form__btn-toggle__btn" 
-            v-for="(person, index) in persons" 
+            v-for="(person, index) in personsStore.persons" 
             :key="index">
             <v-btn 
               class="form__btn-toggle__btn__color" 
@@ -55,13 +55,12 @@
 <script setup>
 import { ref, computed } from "vue";
 import { usePersonsStore } from "./../store/persons";
-import { storeToRefs } from 'pinia';
+import { v4 as uuidv4 } from "uuid";
 
 const personsStore = usePersonsStore();
-const { persons } = storeToRefs(personsStore);
 
 let dish = ref({
-  id: "",
+  id: uuidv4(),
   name: "",
   payer: "",
   whoEat: [],
@@ -73,8 +72,8 @@ let isRules = ref(false);
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
-    if (!dish.value.whoEat.includes(persons.value[toggleMultiple.value[i]].name)) {
-      dish.value.whoEat.push(persons.value[toggleMultiple.value[i]].name);
+    if (!dish.value.whoEat.includes(personsStore.persons[toggleMultiple.value[i]].name)) {
+      dish.value.whoEat.push(personsStore.persons[toggleMultiple.value[i]].name);
     }
   }
 }

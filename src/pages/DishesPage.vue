@@ -11,17 +11,13 @@
           v-for="dish in dishesStore.dishes"
           :key="dish"
           :dish="dish"
-          @remove-dish="
-            (dish) => {
-              dishesStore.removeDish(dish)
-            }
-          " />
+          @remove-dish="(dish) => onRemoveDish(dish)" />
       </v-container>
       <p v-else>Список блюд пуст</p>
       <div class="container__form__btns">
         <v-btn
           class="btn"
-          @click="router.push({ name: 'Persons' })"
+          :to="{ name: 'Persons' }"
           text="Назад"
           variant="tonal" />
         <v-btn
@@ -39,19 +35,7 @@
   <form-dishes
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
-    @add-dish="
-      (dish) => {
-        newDish = {
-          id: uuidv4(),
-          name: dish.name,
-          payer: dish.payer,
-          whoEat: dish.whoEat,
-          price: dish.price,
-        };
-        dishesStore.addDish(newDish);
-        isOpenFormDishes = false;
-      }
-    " />
+    @add-dish="(dish) => onAddDish(dish)" />
 </template>
 
 <script setup>
@@ -73,7 +57,7 @@ if (dishesLocalStorage) {
 
 dishesStore.$subscribe((mutation, state) => {
   localStorage.setItem("dishes", JSON.stringify(state.dishes))
-})
+}, { detached: true })
 
 defineProps({
   dish: Object,
@@ -84,5 +68,14 @@ const changeStyles = computed(() => {
     ? "container container__hidden_space"
     : "container";
 });
+
+const onAddDish = (dish) => {
+  dishesStore.addDish(dish);
+  isOpenFormDishes.value = false;
+}
+
+const onRemoveDish = (dish) => {
+  dishesStore.removeDish(dish);
+}
 </script>
 

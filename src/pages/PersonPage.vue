@@ -17,10 +17,7 @@
         >
           <person-info 
             :person="person"
-            @remove-person="
-              (id) => {
-                personsStore.removePerson(id);
-              }" />
+            @remove-person="(id) => removePerson(id)" />
         </v-list-item>
       </v-list>
       <p v-else>Список людей пуст</p>
@@ -36,12 +33,7 @@
     v-if="isOpen"
     :open="isOpen"
     @change-open="isOpen = false"
-    @add-person="
-      (person) => {
-        personsStore.addPerson(person);
-        isOpen = false;
-      }
-    " />
+    @add-person="(person) => addPerson(person)" />
 </template>
 
 <script setup>
@@ -69,10 +61,19 @@ defineProps({
 
 personsStore.$subscribe((mutation, state) => {
   localStorage.setItem("persons", JSON.stringify(state.persons));
-})
+}, { detached: true })
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";
 });
+
+const removePerson = (id) => {
+  personsStore.removePerson(id);
+}
+
+const addPerson = (person) => {
+  personsStore.addPerson(person);
+  isOpen.value = false;
+}
 
 </script>
