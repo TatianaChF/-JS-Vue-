@@ -48,11 +48,6 @@ let isOpen = ref(false);
 const personsStore = usePersonsStore();
 const { persons } = storeToRefs(personsStore);
 const router = useRouter();
-const personsLocalStorage = localStorage.getItem("persons");
-
-if (personsLocalStorage) {
-  persons.value = JSON.parse(personsLocalStorage);
-}
 
 defineProps({
   open: Boolean,
@@ -61,7 +56,7 @@ defineProps({
 
 personsStore.$subscribe((mutation, state) => {
   localStorage.setItem("persons", JSON.stringify(state.persons));
-}, { detached: true })
+})
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";

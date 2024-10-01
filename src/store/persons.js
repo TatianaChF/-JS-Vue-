@@ -4,6 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 
 export const usePersonsStore = defineStore('personsData', () => {
     const persons = ref([]);
+    const personsLocalStorage = localStorage.getItem("persons");
+
+    if (personsLocalStorage) {
+        persons.value = JSON.parse(personsLocalStorage);
+    }
 
     const addPerson = (personName) => {
         persons.value.push({

@@ -49,15 +49,11 @@ import { v4 as uuidv4 } from "uuid";
 let isOpenFormDishes = ref(false);
 const dishesStore = useDishesStore();
 const router = useRouter();
-const dishesLocalStorage = localStorage.getItem("dishes");
-
-if (dishesLocalStorage) {
-    dishesStore.dishes = JSON.parse(dishesLocalStorage);
-}
 
 dishesStore.$subscribe((mutation, state) => {
   localStorage.setItem("dishes", JSON.stringify(state.dishes))
-}, { detached: true })
+})
+
 
 defineProps({
   dish: Object,

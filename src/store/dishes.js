@@ -3,6 +3,11 @@ import { computed, ref, watch } from 'vue'
 
 export const useDishesStore = defineStore('dishesData', () => {
     const dishes = ref([]);
+    const dishesLocalStorage = localStorage.getItem("dishes");
+
+    if (dishesLocalStorage) {
+        dishes.value = JSON.parse(dishesLocalStorage);
+    }
 
     const totalPrice = computed(() => {
         if(dishes.value.length == 0) return 0

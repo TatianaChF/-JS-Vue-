@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { usePersonsStore } from "./../store/persons";
 import { v4 as uuidv4 } from "uuid";
 
@@ -68,6 +68,10 @@ let dish = ref({
 })
 let toggleMultiple = ref([]);
 let isRules = ref(false);
+
+onMounted(() => {
+  console.log(personsStore.persons)
+})
 
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
