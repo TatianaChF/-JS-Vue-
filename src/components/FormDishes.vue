@@ -12,8 +12,16 @@
         />
         <v-btn-toggle class="form__btn-toggle" v-model="toggleMultiple" multiple>
           <p>Кто ел?</p>
-          <div class="form__btn-toggle__btn" v-for="(person, index) in personsStore.persons" :key="index">
-            <v-btn class="form__btn-toggle__btn__color" @click="onClickAddWhoEat">{{ person.name }}</v-btn>
+          <div 
+            class="form__btn-toggle__btn" 
+            v-for="(person, index) in personsStore.persons" 
+            :key="index">
+            <v-btn 
+              class="form__btn-toggle__btn__color" 
+              @click="onClickAddWhoEat"
+              variant="outlined">
+              {{ person.name }}
+            </v-btn>
           </div>
         </v-btn-toggle>
         <v-btn
@@ -27,12 +35,16 @@
         >
       </v-form>
     </v-sheet>
-    <v-btn variant="text" @click="$emit('changeOpenFormDishes')">x</v-btn>
+    <v-btn 
+      variant="text" 
+      @click="$emit('changeOpenFormDishes')">
+      x
+    </v-btn>
   </div>
 </template>
 
 <script setup>
-import {  ref } from "vue";
+import { ref, computed } from "vue";
 import { usePersonsStore } from "./../store/persons";
 
 const personsStore = usePersonsStore();
