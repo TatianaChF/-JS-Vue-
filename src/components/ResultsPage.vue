@@ -40,10 +40,10 @@ for (let i = 0; i < personsStore.persons.length; i++) {
   let total = 0;
   for (let j = 0; j < dishesStore.dishes.length; j++) {
     let currentDish = dishesStore.dishes[j];
-    let prcieForOne = currentDish.price / currentDish.whoEat.length;
+    let priceForOne = currentDish.price / currentDish.whoEat.length;
 
     if (currentDish.whoEat.includes(currentPerson)) {
-      total += prcieForOne;
+      total += priceForOne;
     }
   }
 
