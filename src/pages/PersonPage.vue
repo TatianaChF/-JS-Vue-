@@ -9,9 +9,9 @@
       <v-list 
         class="container__list-person" 
         lines="three" 
-        v-if="personsStore.persons.length > 0">
+        v-if="persons.length > 0">
         <v-list-item 
-          v-for="person in personsStore.persons"
+          v-for="person in persons"
           :key="person.id"
           :title="name"
         >
@@ -50,16 +50,26 @@ import FormPerson from "../components/FormPerson.vue";
 import PersonInfo from "../components/PersonInfo.vue";
 import { usePersonsStore } from "../store/persons";
 import { useRouter } from "vue-router";
+import { storeToRefs } from 'pinia';
 
 let isOpen = ref(false);
 const personsStore = usePersonsStore();
+const { persons } = storeToRefs(personsStore);
 const router = useRouter();
+const personsLocalStorage = localStorage.getItem("persons");
+
+if (personsLocalStorage) {
+  persons.value = JSON.parse(personsLocalStorage);
+}
 
 defineProps({
   open: Boolean,
   name: String,
 });
 
+personsStore.$subscribe((mutation, state) => {
+  localStorage.setItem("persons", JSON.stringify(state.persons));
+})
 
 const changeStyles = computed(() => {
   return isOpen.value ? "container container__hidden_space" : "container";

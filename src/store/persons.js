@@ -5,12 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 export const usePersonsStore = defineStore('personsData', () => {
     const persons = ref([]);
 
-    const personsLocalStorage = localStorage.getItem("personsData");
-
-    if (personsLocalStorage) {
-        persons.value = JSON.parse(personsLocalStorage)._value;
-    }
-
     const addPerson = (personName) => {
         persons.value.push({
             id: uuidv4(), 
@@ -22,13 +16,13 @@ export const usePersonsStore = defineStore('personsData', () => {
         persons.value = persons.value.filter(person => person.id !== id);
     }
 
-    watch(
-        () => persons,
-        (state) => {
-            localStorage.setItem("personsData", JSON.stringify(state));
-        },
-        { deep: true }
-    );
+    // watch(
+    //     () => persons,
+    //     (state) => {
+    //         localStorage.setItem("personsData", JSON.stringify(state));
+    //     },
+    //     { deep: true }
+    // );
 
     return {persons, addPerson, removePerson}
 }) 

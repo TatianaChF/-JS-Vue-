@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import DishInfo from "../components/DishInfo.vue";
 import FormDishes from "../components/FormDishes.vue";
 import { useDishesStore } from "../store/dishes";
@@ -65,6 +65,15 @@ import { v4 as uuidv4 } from "uuid";
 let isOpenFormDishes = ref(false);
 const dishesStore = useDishesStore();
 const router = useRouter();
+const dishesLocalStorage = localStorage.getItem("dishes");
+
+if (dishesLocalStorage) {
+    dishesStore.dishes = JSON.parse(dishesLocalStorage);
+}
+
+dishesStore.$subscribe((mutation, state) => {
+  localStorage.setItem("dishes", JSON.stringify(state.dishes))
+})
 
 defineProps({
   dish: Object,
