@@ -47,9 +47,9 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
-import FormPerson from "./FormPerson.vue";
-import PersonInfo from "./PersonInfo.vue";
-import { usePersonsStore } from "./../store/persons";
+import FormPerson from "../components/FormPerson.vue";
+import PersonInfo from "../components/PersonInfo.vue";
+import { usePersonsStore } from "../store/persons";
 import { useRouter } from "vue-router";
 
 let isOpen = ref(false);

@@ -61,9 +61,9 @@
 
 <script setup>
 import { ref, computed, watch } from "vue";
-import DishInfo from "./DishInfo.vue";
-import FormDishes from "./FormDishes.vue";
-import { useDishesStore } from "./../store/dishes";
+import DishInfo from "../components/DishInfo.vue";
+import FormDishes from "../components/FormDishes.vue";
+import { useDishesStore } from "../store/dishes";
 import { useRouter } from "vue-router";
 import { v4 as uuidv4 } from "uuid";
 
