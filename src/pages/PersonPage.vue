@@ -1,13 +1,15 @@
 <template>
   <div :class="changeStyles">
-    <v-card class="container__form">
+    <v-card class="d-flex flex-sm-column align-center justify-center ga-3 mb-20 rounded-lg bg-brown-lighten-5">
       <v-btn 
-        class="container__form__btn" 
-        @click="isOpen = true" variant="tonal">
+        class="position-relative mt-9 bg-brown-lighten-3" 
+        @click="isOpen = true" 
+        variant="tonal">
         Добавить человека
       </v-btn>
       <v-list 
-        class="container__list-person" 
+        class="d-flex flex-sm-column bg-brown-lighten-5 rounded-lg mb-5" 
+        width="1000"
         lines="three" 
         v-if="persons.length > 0">
         <v-list-item 
@@ -23,9 +25,9 @@
       <p v-else>Список людей пуст</p>
     </v-card>
     <v-btn 
-      class="btn" 
+      class="position-relative mt-9 bg-brown-lighten-3" 
       :to="{ name: 'Dishes' }"
-      variant="tonal">
+      variant="text">
       Дальше!
     </v-btn>
   </div>

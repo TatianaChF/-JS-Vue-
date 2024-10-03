@@ -1,8 +1,8 @@
 <template>
   <div :class="changeStyles">
-    <v-container class="container container__form">
+    <v-container class="d-flex flex-sm-column align-center justify-center ga-3 mb-20 rounded-lg bg-brown-lighten-5">
       <v-btn
-        class="container__form__btn"
+        class="position-relative mt-9 bg-brown-lighten-3"
         @click="isOpenFormDishes = true"
         variant="tonal"
         text="Добавить блюдо" />
@@ -14,19 +14,23 @@
           @remove-dish="(dish) => onRemoveDish(dish)" />
       </v-container>
       <p v-else>Список блюд пуст</p>
-      <div class="container__form__btns">
+      <div 
+        class="d-flex justify-md-space-around align-center" 
+        style="width: 40%">
         <v-btn
-          class="btn"
+          class="position-relative bg-brown-lighten-3"
           :to="{ name: 'Persons' }"
           text="Назад"
           variant="tonal" />
         <v-btn
-          class="btn"
+          class="position-relative bg-brown-lighten-3"
           :to="{ name: 'Results' }"
           text="Рассчитать"
           variant="tonal" />
       </div>
-      <v-card class="container__result">
+      <v-card 
+        class="d-flex justify-md-center align-center bg-grey-darken-1 ga-lg-1"
+        style="width: 50%; height: 40px">
         <h4>Итог:</h4>
         <h4>{{ dishesStore.totalPrice }} рублей</h4>
       </v-card>
