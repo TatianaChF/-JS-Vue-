@@ -1,5 +1,5 @@
-$card-color: #eae7dc;
-$btns-color: #d8c3a5;
+$card-color: #EFEBE9;
+$btns-color: #BCAAA4;
 $border-color: #8e8d8a;
 
 .main-container {
@@ -26,10 +26,6 @@ $border-color: #8e8d8a;
     width: 80%;
     margin-left: 120px;
 
-    h1 {
-      margin-bottom: 20px;
-    }
-
     &__form {
       display: flex;
       flex-direction: column;
@@ -55,33 +51,6 @@ $border-color: #8e8d8a;
         margin-bottom: 20px;
         margin: auto;
       }
-    }
-
-    &__card-person {
-      background-color: $card-color;
-      margin-bottom: 20px;
-      margin-left: 100px;
-    }
-
-    &__list-person {
-      display: flex;
-      flex-direction: column;
-      width: 85%;
-      background-color: $card-color;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-
-    &__result {
-      background-color: $border-color;
-      color: white;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      height: 40px;
-      width: 50%;
     }
 
     &__hidden_space {
@@ -117,89 +86,6 @@ $border-color: #8e8d8a;
         background-color:white;
         color: black;
       }
-    }
-  }
-}
-
-.btn {
-  background-color: $btns-color;
-
-  &__main {
-    background-color: #e85a4f;
-    color: white;
-    font-weight: bold;
-  }
-}
-
-.person-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-left: 238px;
-  width: 48%;
-  
-  .person-card {
-    padding: 8px;
-    background-color: $card-color;
-    border-radius: 10px;
-    border: 1px solid $border-color;
-    font-size: 18px;
-  }
-
-  &__btn {
-    background-color: $card-color;
-  }
-}
-
-.dishes {
-  &__text {
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-  }
-
-  &__card {
-    width: 80%;
-    margin-left: 40px;
-    background-color: $card-color;
-    border: 1px solid $border-color;
-    border-radius: 10px;
-  }
-
-  &__container-card {
-    display: flex;
-    gap: 30px;
-
-    &__btn {  
-        align-self: center;
-    }
-  }
-
-  &__info {
-    display: flex;
-    width: 100%;
-    gap: 15px;
-  }
-}
-
-.results {
-  &__card {
-    background-color: $card-color;
-    margin-bottom: 20px;
-
-    h3 {
-      margin: 20px 0;
-      font-size: 26px;
-      color: #e85a4f;
-    }
-  }
-
-  &__text {
-    margin-bottom: 20px;
-
-    p {
-      font-size: 18px;
-      margin-bottom: 5px;
     }
   }
 }

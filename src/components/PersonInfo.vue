@@ -4,8 +4,7 @@
     width="550" >
     <v-sheet
       class="d-flex justify-sm-center space-around align-center pa-5 bg-brown-lighten-5 border-md rounded"
-      width="450"
-    >
+      width="450">
       <p>{{ props.person.name }}</p>
     </v-sheet>
     <v-btn 

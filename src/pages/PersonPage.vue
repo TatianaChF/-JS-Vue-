@@ -8,7 +8,7 @@
         Добавить человека
       </v-btn>
       <v-list 
-        class="d-flex flex-sm-column bg-brown-lighten-5 rounded-lg mb-5" 
+        class="d-flex flex-sm-column bg-brown-lighten-5 rounded-lg mb-5 ml-12" 
         width="1000"
         lines="three" 
         v-if="persons.length > 0">

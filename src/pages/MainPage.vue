@@ -2,7 +2,7 @@
     <div class="main-container">
         <h1>Разделить чек</h1>
         <v-btn 
-            class="btn__main" 
+            class="bg-red-lighten-1" 
             :to="{name: 'Persons'}"
             variant="tonal">
             Начать

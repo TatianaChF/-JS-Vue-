@@ -1,7 +1,12 @@
 <template>
   <div class="form form__container">
-    <v-sheet class="mx-auto" width="300">
-      <v-form class="form form__add-person" v-model="isRules" @submit.prevent>
+    <v-sheet 
+      class="mx-auto" 
+      width="300">
+      <v-form 
+        class="form form__add-person" 
+        v-model="isRules" 
+        @submit.prevent>
         <v-text-field
           v-model="person"
           :rules="rules"
@@ -17,7 +22,9 @@
         </v-btn>
       </v-form>
     </v-sheet>
-    <v-btn variant="text" @click="$emit('changeOpen')">x</v-btn>
+    <v-btn 
+      variant="text"
+      @click="$emit('changeOpen')">x</v-btn>
   </div>
 </template>
 

@@ -1,7 +1,12 @@
 <template>
   <div class="form form__container">
-    <v-sheet class="mx-auto" width="500">
-      <v-form class="form form__add-person" v-model="isRules" @submit.prevent>
+    <v-sheet 
+      class="mx-auto" 
+      width="500">
+      <v-form 
+        class="form form__add-person" 
+        v-model="isRules" 
+        @submit.prevent>
         <v-text-field 
           v-model="dish.name" 
           :rules="nameRules" 

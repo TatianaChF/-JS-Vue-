@@ -1,22 +1,30 @@
 <template>
-  <v-container class="container">
-    <v-card class="results__card">
-      <h3>Результаты</h3>
-      <v-container class="results__text">
+  <v-container class="d-flex flex-sm-column justify-center align-center mt-4">
+    <v-card 
+      class="bg-brown-lighten-5 mb-3" 
+      style="width: 80%">
+      <h3 
+        class="text-center font-weight-black mt-4" 
+        style="color: #EF5350">
+        Результаты
+      </h3>
+      <v-container class="text-center mb-3 text-body-1">
         <div 
           v-for="(result, index) in results" 
           :key="index">
-          <p>{{ result }}</p>
+          <p class="mb-1">{{ result }}</p>
         </div>
       </v-container>
     </v-card>
-    <div class="container__form__btns">
+    <div 
+      class="d-flex justify-space-around align-center"
+      style="width: 50%">
       <v-btn 
-        class="btn" 
+        class="bg-brown-lighten-3" 
         :to="{ name: 'Dishes' }" 
         text="Назад" />
       <v-btn 
-        class="btn__main" 
+        class="bg-red-lighten-1" 
         :to="{ name: 'Home' }" 
         text="На главную" />
     </div>
