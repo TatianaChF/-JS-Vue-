@@ -21,13 +21,5 @@ export const usePersonsStore = defineStore('personsData', () => {
         persons.value = persons.value.filter(person => person.id !== id);
     }
 
-    // watch(
-    //     () => persons,
-    //     (state) => {
-    //         localStorage.setItem("personsData", JSON.stringify(state));
-    //     },
-    //     { deep: true }
-    // );
-
     return {persons, addPerson, removePerson}
 }) 
