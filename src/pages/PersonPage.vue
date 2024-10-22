@@ -37,7 +37,6 @@
   </div>
   <form-person
     v-if="isOpen"
-    :open="isOpen"
     @change-open="isOpen = false"
     @add-person="(person) => addPerson(person)" 
   />
@@ -57,9 +56,8 @@ const { persons } = storeToRefs(personsStore);
 const router = useRouter();
 
 defineProps({
-  open: Boolean,
-  name: String,
-});
+  person: Object
+})
 
 personsStore.$subscribe((mutation, state) => {
   localStorage.setItem("persons", JSON.stringify(state.persons));

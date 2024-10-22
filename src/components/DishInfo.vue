@@ -49,6 +49,8 @@
 </template>
 
 <script setup>
-const props = defineProps(["dish"]);
+const props = defineProps({
+  dish: Object
+});
 </script>
 

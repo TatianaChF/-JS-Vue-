@@ -22,7 +22,9 @@
 <script setup>
 import { ref } from "vue";
 
-const props = defineProps(["person"]);
+const props = defineProps({
+  person: Object
+});
 const emits = defineEmits(["removePerson"]);
 
 const removePerson = () => {

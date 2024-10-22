@@ -37,8 +37,6 @@
 
 <script setup>
 import { ref } from 'vue';
-
-const props = defineProps(["open", "id"]);
 let person = ref("");
 const isRules = ref(false);
 
