@@ -10,7 +10,7 @@
       <v-container v-if="dishesStore.dishes.length > 0">
         <DishInfo
           v-for="dish in dishesStore.dishes"
-          :key="dish"
+          :key="dish.id"
           :dish="dish"
           @remove-dish="(dish) => onRemoveDish(dish)" 
         />

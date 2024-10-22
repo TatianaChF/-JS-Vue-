@@ -33,8 +33,8 @@
           <p>Кто ел?</p>
           <div 
             class="form__btn-toggle__btn" 
-            v-for="(person, index) in personsStore.persons" 
-            :key="index"
+            v-for="(person) in personsStore.persons" 
+            :key="person.id"
           >
             <v-btn 
               class="form__btn-toggle__btn__color" 

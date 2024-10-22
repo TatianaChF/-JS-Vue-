@@ -30,8 +30,8 @@
           >
             <h4>Кто ел?</h4>
             <p 
-              v-for="(person, index) in dish.whoEat" 
-              :key="index"
+              v-for="(person) in dish.whoEat" 
+              :key="person.id"
             >
               {{ person }}
             </p>

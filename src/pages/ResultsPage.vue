@@ -12,10 +12,10 @@
       </h3>
       <v-container class="text-center mb-3 text-body-1">
         <div 
-          v-for="(result, index) in results" 
-          :key="index"
+          v-for="result in results" 
+          :key="result.id"
         >
-          <p class="mb-1">{{ result }}</p>
+          <p class="mb-1">{{ result.description }}</p>
         </div>
       </v-container>
     </v-card>
@@ -42,6 +42,7 @@ import { useRouter } from "vue-router";
 import { usePersonsStore } from "../store/persons";
 import { useDishesStore } from "../store/dishes";
 import { ref } from "vue";
+import { v4 as uuidv4 } from "uuid";
 
 const router = useRouter();
 const personsStore = usePersonsStore();
@@ -62,7 +63,10 @@ for (let i = 0; i < personsStore.persons.length; i++) {
   }
 
   let result = `${currentPerson} должен ${total.toFixed(2)} рублей`;
-  results.value.push(result);
+  results.value.push({
+    id: uuidv4(),
+    description: result
+  });
 }
 </script>
 
