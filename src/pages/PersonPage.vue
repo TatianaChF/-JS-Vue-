@@ -21,7 +21,7 @@
         >
           <PersonInfo 
             :person="person"
-            @remove-person="(id) => removePerson(id)" 
+            @remove-person="removePerson" 
           />
         </v-list-item>
       </v-list>
@@ -38,7 +38,7 @@
   <FormPerson
     v-if="isOpen"
     @change-open="isOpen = false"
-    @add-person="(person) => addPerson(person)" 
+    @add-person="addPerson" 
   />
 </template>
 

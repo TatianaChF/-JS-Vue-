@@ -12,7 +12,7 @@
           v-for="dish in dishesStore.dishes"
           :key="dish.id"
           :dish="dish"
-          @remove-dish="(dish) => onRemoveDish(dish)" 
+          @remove-dish="onRemoveDish" 
         />
       </v-container>
       <p v-else>Список блюд пуст</p>
@@ -45,7 +45,7 @@
   <FormDishes
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
-    @add-dish="(dish) => onAddDish(dish)" 
+    @add-dish="onAddDish" 
   />
 </template>
 
