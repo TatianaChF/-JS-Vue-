@@ -40,7 +40,7 @@
     </v-card>
     <v-btn 
       style="align-self: center" 
-      @click="$emit('removeDish', props.dish.id)" 
+      @click="onClickRemoveDish(props.dish.id)" 
       variant="text"
     >
       <v-icon icon="mdi-delete" />
@@ -52,5 +52,10 @@
 const props = defineProps({
   dish: Object
 });
+const emits = defineEmits(["removeDish"]);
+
+const onClickRemoveDish = (dishId) => {
+  emits("removeDish", dishId)
+}
 </script>
 

@@ -49,7 +49,7 @@
           class="btn" 
           type="submit"
           variant="tonal"
-          @click="$emit('addDish', dish)"
+          @click="onClickAddDish(dish)"
           :disabled="!isRules"
           block
         >
@@ -60,7 +60,7 @@
     </v-sheet>
     <v-btn 
       variant="text" 
-      @click="$emit('changeOpenFormDishes')"
+      @click="emits('changeOpenFormDishes')"
     >
       x
     </v-btn>
@@ -84,6 +84,8 @@ let dish = ref({
 let toggleMultiple = ref([]);
 let isRules = ref(false);
 
+const emits = defineEmits(["addDish", "changeOpenFormDishes"]);
+
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
@@ -91,6 +93,10 @@ const onClickAddWhoEat = () => {
       dish.value.whoEat.push(personsStore.persons[toggleMultiple.value[i]].name);
     }
   }
+}
+
+const onClickAddDish = (dish) => {
+  emits("addDish", dish)
 }
 
 const nameRules = [

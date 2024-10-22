@@ -18,7 +18,7 @@
           class="btn" 
           type="submit" 
           variant="tonal" 
-          @click="$emit('addPerson', person)" 
+          @click="onClickAddPerson(person)" 
           :disabled="!isRules"
           block
         >
@@ -28,7 +28,7 @@
     </v-sheet>
     <v-btn 
       variant="text"
-      @click="$emit('changeOpen')"
+      @click="emits('changeOpen')"
     >
       x
     </v-btn>
@@ -40,6 +40,11 @@ import { ref } from 'vue';
 
 let person = ref("");
 const isRules = ref(false);
+const emits = defineEmits(["addPerson", "changeOpen"]);
+
+const onClickAddPerson = (person) => {
+  emits("addPerson", person)
+}
 
 const rules = [
   (v) => !!v || "Это поле обязательно"
