@@ -41,7 +41,7 @@
 import { useRouter } from "vue-router";
 import { usePersonsStore } from "../store/persons";
 import { useDishesStore } from "../store/dishes";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
 const router = useRouter();
@@ -49,24 +49,28 @@ const personsStore = usePersonsStore();
 const dishesStore = useDishesStore();
 const results = ref([]);
 
-// цикл, в котором высчитывается, кто сколько должен
-for (let i = 0; i < personsStore.persons.length; i++) {
-  let currentPerson = personsStore.persons[i].name;
-  let total = 0;
-  for (let j = 0; j < dishesStore.dishes.length; j++) {
-    let currentDish = dishesStore.dishes[j];
-    let priceForOne = currentDish.price / currentDish.whoEat.length;
+onMounted(() => {
+  // цикл, в котором высчитывается, кто сколько должен
+  for (let i = 0; i < personsStore.persons.length; i++) {
+    let currentPerson = personsStore.persons[i].name;
+    let total = 0;
+    for (let j = 0; j < dishesStore.dishes.length; j++) {
+      let currentDish = dishesStore.dishes[j];
+      let priceForOne = currentDish.price / currentDish.whoEat.length;
 
-    if (currentDish.whoEat.includes(currentPerson)) {
-      total += priceForOne;
+      if (currentDish.whoEat.includes(currentPerson)) {
+        total += priceForOne;
+      }
     }
-  }
 
-  let result = `${currentPerson} должен ${total.toFixed(2)} рублей`;
-  results.value.push({
-    id: uuidv4(),
-    description: result
-  });
-}
+    let result = `${currentPerson} должен ${total.toFixed(2)} рублей`;
+    results.value.push({
+      id: uuidv4(),
+      description: result
+    });
+  }
+})
+
+
 </script>
 
