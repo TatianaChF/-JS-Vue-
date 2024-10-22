@@ -37,6 +37,7 @@
 
 <script setup>
 import { ref } from 'vue';
+
 let person = ref("");
 const isRules = ref(false);
 

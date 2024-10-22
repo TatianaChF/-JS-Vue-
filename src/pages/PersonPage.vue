@@ -19,7 +19,7 @@
           :key="person.id"
           :title="name"
         >
-          <person-info 
+          <PersonInfo 
             :person="person"
             @remove-person="(id) => removePerson(id)" 
           />
@@ -35,7 +35,7 @@
       Дальше!
     </v-btn>
   </div>
-  <form-person
+  <FormPerson
     v-if="isOpen"
     @change-open="isOpen = false"
     @add-person="(person) => addPerson(person)" 

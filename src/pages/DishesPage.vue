@@ -8,7 +8,7 @@
         text="Добавить блюдо" 
       />
       <v-container v-if="dishesStore.dishes.length > 0">
-        <dish-info
+        <DishInfo
           v-for="dish in dishesStore.dishes"
           :key="dish"
           :dish="dish"
@@ -42,7 +42,7 @@
       </v-card>
     </v-container>
   </div>
-  <form-dishes
+  <FormDishes
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
     @add-dish="(dish) => onAddDish(dish)" 
