@@ -4,7 +4,8 @@
         <v-btn 
             class="bg-red-lighten-1" 
             :to="{name: 'Persons'}"
-            variant="tonal">
+            variant="tonal"
+        >
             Начать
         </v-btn>
     </div>

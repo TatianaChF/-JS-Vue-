@@ -5,32 +5,38 @@
         class="position-relative mt-9 bg-brown-lighten-3"
         @click="isOpenFormDishes = true"
         variant="tonal"
-        text="Добавить блюдо" />
+        text="Добавить блюдо" 
+      />
       <v-container v-if="dishesStore.dishes.length > 0">
         <dish-info
           v-for="dish in dishesStore.dishes"
           :key="dish"
           :dish="dish"
-          @remove-dish="(dish) => onRemoveDish(dish)" />
+          @remove-dish="(dish) => onRemoveDish(dish)" 
+        />
       </v-container>
       <p v-else>Список блюд пуст</p>
       <div 
         class="d-flex justify-md-space-around align-center" 
-        style="width: 40%">
+        style="width: 40%"
+      >
         <v-btn
           class="position-relative bg-brown-lighten-3"
           :to="{ name: 'Persons' }"
           text="Назад"
-          variant="tonal" />
+          variant="tonal" 
+        />
         <v-btn
           class="position-relative bg-brown-lighten-3"
           :to="{ name: 'Results' }"
           text="Рассчитать"
-          variant="tonal" />
+          variant="tonal" 
+        />
       </div>
       <v-card 
         class="d-flex justify-md-center align-center bg-grey-darken-1 ga-lg-1"
-        style="width: 50%; height: 40px">
+        style="width: 50%; height: 40px"
+      >
         <h4>Итог:</h4>
         <h4>{{ dishesStore.totalPrice }} рублей</h4>
       </v-card>
@@ -39,7 +45,8 @@
   <form-dishes
     v-if="isOpenFormDishes"
     @change-open-form-dishes="isOpenFormDishes = false"
-    @add-dish="(dish) => onAddDish(dish)" />
+    @add-dish="(dish) => onAddDish(dish)" 
+  />
 </template>
 
 <script setup>

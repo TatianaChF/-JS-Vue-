@@ -2,29 +2,36 @@
   <div class="form form__container">
     <v-sheet 
       class="mx-auto" 
-      width="300">
+      width="300"
+    >
       <v-form 
         class="form form__add-person" 
         v-model="isRules" 
-        @submit.prevent>
+        @submit.prevent
+      >
         <v-text-field
           v-model="person"
           :rules="rules"
-          label="Имя" />
+          label="Имя" 
+        />
         <v-btn 
           class="btn" 
           type="submit" 
           variant="tonal" 
           @click="$emit('addPerson', person)" 
           :disabled="!isRules"
-          block>
+          block
+        >
           Добавить
         </v-btn>
       </v-form>
     </v-sheet>
     <v-btn 
       variant="text"
-      @click="$emit('changeOpen')">x</v-btn>
+      @click="$emit('changeOpen')"
+    >
+      x
+    </v-btn>
   </div>
 </template>
 

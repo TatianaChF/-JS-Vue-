@@ -2,31 +2,37 @@
   <v-container class="d-flex flex-sm-column justify-center align-center mt-4">
     <v-card 
       class="bg-brown-lighten-5 mb-3" 
-      style="width: 80%">
+      style="width: 80%"
+    >
       <h3 
         class="text-center font-weight-black mt-4" 
-        style="color: #EF5350">
+        style="color: #EF5350"
+      >
         Результаты
       </h3>
       <v-container class="text-center mb-3 text-body-1">
         <div 
           v-for="(result, index) in results" 
-          :key="index">
+          :key="index"
+        >
           <p class="mb-1">{{ result }}</p>
         </div>
       </v-container>
     </v-card>
     <div 
       class="d-flex justify-space-around align-center"
-      style="width: 50%">
+      style="width: 50%"
+    >
       <v-btn 
         class="bg-brown-lighten-3" 
         :to="{ name: 'Dishes' }" 
-        text="Назад" />
+        text="Назад" 
+      />
       <v-btn 
         class="bg-red-lighten-1" 
         :to="{ name: 'Home' }" 
-        text="На главную" />
+        text="На главную" 
+      />
     </div>
   </v-container>
 </template>

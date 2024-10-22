@@ -4,14 +4,16 @@
       <v-btn 
         class="position-relative mt-9 bg-brown-lighten-3" 
         @click="isOpen = true" 
-        variant="tonal">
+        variant="tonal"
+      >
         Добавить человека
       </v-btn>
       <v-list 
         class="d-flex flex-sm-column bg-brown-lighten-5 rounded-lg mb-5 ml-12" 
         width="1000"
         lines="three" 
-        v-if="persons.length > 0">
+        v-if="persons.length > 0"
+      >
         <v-list-item 
           v-for="person in persons"
           :key="person.id"
@@ -19,7 +21,8 @@
         >
           <person-info 
             :person="person"
-            @remove-person="(id) => removePerson(id)" />
+            @remove-person="(id) => removePerson(id)" 
+          />
         </v-list-item>
       </v-list>
       <p v-else>Список людей пуст</p>
@@ -27,7 +30,8 @@
     <v-btn 
       class="position-relative mt-9 bg-brown-lighten-3" 
       :to="{ name: 'Dishes' }"
-      variant="text">
+      variant="text"
+    >
       Дальше!
     </v-btn>
   </div>
@@ -35,7 +39,8 @@
     v-if="isOpen"
     :open="isOpen"
     @change-open="isOpen = false"
-    @add-person="(person) => addPerson(person)" />
+    @add-person="(person) => addPerson(person)" 
+  />
 </template>
 
 <script setup>
