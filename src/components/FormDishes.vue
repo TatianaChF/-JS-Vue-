@@ -84,10 +84,6 @@ let dish = ref({
 let toggleMultiple = ref([]);
 let isRules = ref(false);
 
-onMounted(() => {
-  console.log(personsStore.persons)
-})
-
 // добавление значений в массив whoEat
 const onClickAddWhoEat = () => {
   for (let i = 0; i < toggleMultiple.value.length; i++ ) {
