@@ -48,29 +48,95 @@ const router = useRouter();
 const personsStore = usePersonsStore();
 const dishesStore = useDishesStore();
 const results = ref([]);
+const outputResultsArr = ref([]);
+const debts = ref([]);
 
 onMounted(() => {
-  // цикл, в котором высчитывается, кто сколько должен
+  // цикл, в котором заполняется массив должников
   for (let i = 0; i < personsStore.persons.length; i++) {
     let currentPerson = personsStore.persons[i].name;
-    let total = 0;
+    let payerName;
+
     for (let j = 0; j < dishesStore.dishes.length; j++) {
       let currentDish = dishesStore.dishes[j];
       let priceForOne = currentDish.price / currentDish.whoEat.length;
 
       if (currentDish.whoEat.includes(currentPerson)) {
-        total += priceForOne;
+        if (currentPerson !== currentDish.payer) {
+          payerName = currentDish.payer;
+
+          const duty = {
+            debtor: currentPerson,
+            payer: payerName,
+            sum: priceForOne
+          }
+
+          debts.value.push(duty);
+        } 
       }
     }
+  } 
 
-    let result = `${currentPerson} должен ${total.toFixed(2)} рублей`;
-    results.value.push({
-      id: uuidv4(),
-      description: result
-    });
+  // цикл, в котором высчитывается общая сумма долга
+  for (let i = 0; i < debts.value.length; i++) {
+    const currentDebt = debts.value[i];
+    let reverseDebt = debts.value.find((debt) => debt.debtor === currentDebt.payer && debt.payer === currentDebt.debtor);
+    let sameDebt = debts.value.find((debt) => debt.debtor === currentDebt.debtor && debt.payer === currentDebt.payer);
+
+    if (sameDebt && sameDebt != currentDebt) {
+      currentDebt.sum += sameDebt.sum;
+      let newDebts = debts.value.filter((debt) => debt != sameDebt);
+      debts.value = newDebts;
+    }
+
+    if (reverseDebt) {
+      if (reverseDebt.sum > currentDebt.sum) {
+        reverseDebt.sum = reverseDebt.sum - currentDebt.sum;
+        currentDebt.sum = 0;
+      } else {
+        currentDebt.sum = currentDebt.sum - reverseDebt.sum;
+        reverseDebt.sum = 0;
+      }
+    } 
+  } 
+
+  // цикл для заполнения массива результатов
+  for (let i = 0; i < debts.value.length; i++) {
+    const currentDebt = debts.value[i];
+    let result;
+
+    if (currentDebt.sum === 0) {
+      result = `${currentDebt.debtor} никому ничего не должен ;))`;
+
+      results.value.push({
+        id: uuidv4(),
+        description: result
+      });
+    } else {
+      result = `${currentDebt.debtor} должен ${currentDebt.payer} ${currentDebt.sum} рублей`;
+
+      results.value.push({
+        id: uuidv4(),
+        description: result
+      });
+    }
+  }
+
+  //цикл для вывода пользователей, которые не попали в массив должников
+  for (let i = 0; i < personsStore.persons.length; i++) {
+    let currentPerson = personsStore.persons[i].name;
+    let payer = debts.value.find((debt) => debt.debtor === currentPerson);
+
+    if (!payer) {
+      let result = `${currentPerson} никому ничего не должен ;))`;
+
+      results.value.push({
+        id: uuidv4(),
+        description: result
+      });
+    }
   }
 })
-
 
 </script>
 
